@@ -169,7 +169,10 @@ public class TransactionService {
         Double tvq = 9.975;
         Double montantTps = montantTotal * (tps/100);
         Double montantTvq = montantTotal * (tvq/100);
-        montantAvecTaxe =  montantTotal + montantTps + montantTvq;
-        return montantAvecTaxe;
+        montantAvecTaxe =  montantTotal + (montantTps + montantTvq);
+
+        double rounded = (double) Math.round(montantAvecTaxe * 100.0) / 100.0;
+
+        return rounded;
     }
 }
