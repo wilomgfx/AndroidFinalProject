@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Misc title-->
+    <string name="app_name">FinalProject</string>
+    <string name="main_title">FinalProject</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Main Activity-->
+    <string name="scanner">Product Scan</string>
+    <string name="addProduct">+ product</string>
+    <string name="total">Total: </string>
+    <string name="pay">Pay</string>
+    <string name="transactionSave">Saving transaction...</string>
+    <string name="menu_productsCreate">Creating products...</string>
+    <string name="menu_productsClear">Products cleared.</string>
+    <string name="menu_orderCreate">Creating order...</string>
+    <string name="dialog_payer">Pay products</string>
+
+    <!--Menu-->
+    <string name="action_create_prod">Create Products</string>
+    <string name="action_clear_prod">Clear Products</string>
+    <string name="action_create_order">Create Order</string>
+
+    <!--Payment Dialog-->
+    <string name="money_100$">100$:</string>
+    <string name="money_50$">50$:</string>
+    <string name="money_20$">20$:</string>
+    <string name="money_10$">10$:</string>
+    <string name="money_5$">5$:</string>
+    <string name="money_2$">2$:</string>
+    <string name="money_1$">1$:</string>
+    <string name="money_25c">25c:</string>
+    <string name="money_10c">10c:</string>
+    <string name="money_5c">5c:</string>
+    <string name="money_1c">1c:</string>
+
+
+    <!--Add Product Dialog-->
+    <string name="addProd_prodName">Product Name:</string>
+    <string name="addProd_prodDesc">Description:</string>
+    <string name="addProd_prodPrice">Price:</string>
+    <string name="addProd_prodBarCode">Bar Code:</string>
+    <string name="addProd_btnAdd">Add</string>
+    <string name="addProd_btnCancel">Cancel</string>
+
+    <!--List-->
+    <string name="listItem_prodName">Product</string>
+    <string name="listItem_prodQty">Quantity</string>
+</resources>

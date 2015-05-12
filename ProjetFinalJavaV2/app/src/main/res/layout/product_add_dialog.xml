@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:textSize="40sp"-->
+    <!--android:text="Ajouter un produit:"-->
+    <!--android:gravity="center"-->
+    <!--android:textColor="#000"/>-->
+
+    <!--</LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--android:layout_marginTop="30dp">-->
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#000080"
+            android:text="@string/addProd_prodName"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="right"/>
+        <EditText
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:id="@+id/txt_productName"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#000080"
+            android:text="@string/addProd_prodDesc"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="right"/>
+        <EditText
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:inputType="textMultiLine"
+            android:id="@+id/txt_desc"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#000080"
+            android:text="@string/addProd_prodPrice"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="right"/>
+        <EditText
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:inputType="numberDecimal"
+            android:id="@+id/txt_price"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#000080"
+            android:text="@string/addProd_prodBarCode"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="right"/>
+        <EditText
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:id="@+id/txt_barcode"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="@string/addProd_btnAdd"
+        android:textSize="25sp"
+        android:id="@+id/btn_add"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="@string/addProd_btnCancel"
+        android:textSize="25sp"
+        android:id="@+id/btn_cancel"/>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".TP3Main">
+    <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
+    <!--android:orderInCategory="100" app:showAsAction="never" />-->
+    <item android:id="@+id/action_create_prod" android:title="@string/action_create_prod"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_clear_prod" android:title="@string/action_clear_prod"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_create_order" android:title="@string/action_create_order"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_manageDiscounts" android:title="@string/action_manageDiscounts"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

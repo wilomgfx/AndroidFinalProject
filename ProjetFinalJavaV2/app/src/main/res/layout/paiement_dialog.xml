@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+    <!--Debut layout vertical 1 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_100$"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <EditText
+                android:layout_width="52dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:id="@+id/txt_100d" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_50$" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:id="@+id/txt_50d"
+                android:layout_weight="0.07" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_20$"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_20d"
+                android:layout_weight="0.08" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <!--Fin layout vertical 1 -->
+
+    <!--Debut layout vertical 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <!--android:layout_marginTop="30dp">-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_10$"
+                android:layout_gravity="center_horizontal"
+                android:gravity="right"/>
+            <EditText
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_10d"
+                android:layout_weight="0.06" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_5$"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_5d"
+                android:layout_weight="0.08" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_2$"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_2$"
+                android:layout_weight="0.16" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--Fin layout vertical 2 -->
+
+    <!--Debut layout vertical 3 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_1$"
+                android:layout_gravity="center_horizontal"
+                android:gravity="right"/>
+            <EditText
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_1$"
+                android:layout_weight="0.06" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_25c"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_25c"
+                android:layout_weight="0.08" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_10c"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_10c"
+                android:layout_weight="0.16" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--Fin layout vertical 3 -->
+
+    <!--Debut layout vertical 4 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_5c"
+                android:layout_gravity="center_horizontal"
+                android:gravity="right"/>
+            <EditText
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_5c"
+                android:layout_weight="0.06" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="#000080"
+                android:text="@string/money_1c"
+                android:gravity="right"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txt_1c"
+                android:layout_weight="0.08" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--Fin layout vertical 4 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/pay"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

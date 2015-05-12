@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Misc title-->
+    <string name="app_name">ProjetFinal</string>
+    <string name="main_title">ProjetFinal</string>
+    <string name="action_settings">Options</string>
+
+    <!--Main Activity-->
+    <string name="scanner">Scanner Produit</string>
+    <string name="addProduct">+ produit</string>
+    <string name="total">Total: </string>
+    <string name="pay">Payer</string>
+    <string name="transactionSave">Sauvegarde de la transaction...</string>
+    <string name="menu_productsCreate">Création des produits...</string>
+    <string name="menu_productsClear">Produits supprimés.</string>
+    <string name="menu_orderCreate">Création d\'une commande...</string>
+    <string name="dialog_payer">Payer les produits</string>
+
+    <!--Menu-->
+    <string name="action_create_prod">Créer Produits</string>
+    <string name="action_clear_prod">Vider Produits</string>
+    <string name="action_create_order">Créer Commandes</string>
+    <string name="action_manageDiscounts">Gérer les rabais</string>
+
+    <!--Payment Dialog-->
+    <string name="money_100$">100$:</string>
+    <string name="money_50$">50$:</string>
+    <string name="money_20$">20$:</string>
+    <string name="money_10$">10$:</string>
+    <string name="money_5$">5$:</string>
+    <string name="money_2$">2$:</string>
+    <string name="money_1$">1$:</string>
+    <string name="money_25c">25c:</string>
+    <string name="money_10c">10c:</string>
+    <string name="money_5c">5c:</string>
+    <string name="money_1c">1c:</string>
+
+
+    <!--Add Product Dialog-->
+    <string name="addProd_prodName">Nom du produit:</string>
+    <string name="addProd_prodDesc">Description:</string>
+    <string name="addProd_prodPrice">Prix:</string>
+    <string name="addProd_prodBarCode">Code Barre:</string>
+    <string name="addProd_btnAdd">Ajouter</string>
+    <string name="addProd_btnCancel">Annuler</string>
+
+    <!--List-->
+    <string name="listItem_prodName">Produit</string>
+    <string name="listItem_prodQty">Quantité</string>
+
+</resources>
