@@ -49,4 +49,7 @@
     <string name="listItem_prodName">Produit</string>
     <string name="listItem_prodQty">Quantité</string>
 
+    <!--Discount Dialog-->
+    <string name="discountDialog_title">Gestion des rabais</string>
+
 </resources>

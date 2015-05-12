@@ -46,4 +46,7 @@
     <!--List-->
     <string name="listItem_prodName">Product</string>
     <string name="listItem_prodQty">Quantity</string>
+
+    <!--Discount Dialog-->
+    <string name="discountDialog_title">Manage Discounts</string>
 </resources>

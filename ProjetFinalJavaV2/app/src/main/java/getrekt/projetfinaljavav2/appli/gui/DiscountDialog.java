@@ -23,47 +23,11 @@ public class DiscountDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.product_add_dialog, container, false);
 
         // Sets title area
-        getDialog().setTitle("Gestion des rabais");
+        getDialog().setTitle(getString(R.string.discountDialog_title));
 
-        // Identifying data to send back
-        final EditText txtProductName = (EditText) v.findViewById(R.id.txt_productName);
-        final EditText txtDesc = (EditText) v.findViewById(R.id.txt_desc);
-        final EditText txtPrice = (EditText) v.findViewById(R.id.txt_price);
-        final EditText txtBarcode = (EditText) v.findViewById(R.id.txt_barcode);
 
-        // Watch for button clicks.
-        Button buttonAdd = (Button) v.findViewById(R.id.btn_add);
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mDialogResult != null)
-                {
-                    // Sending data
-                    mDialogResult.finish(txtProductName.getText().toString(),
-                            txtDesc.getText().toString(),
-                            Double.parseDouble(txtPrice.getText().toString()),
-                            txtBarcode.getText().toString());
-                    dismiss();
-                }
-            }
-        });
-
-        Button buttonCancel = (Button)v.findViewById(R.id.btn_cancel);
-
-        buttonCancel.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                dismiss();
-            }
-        });
 
         return v;
-    }
-
-    public void setDialogResult(DialogResult dialogResult)
-    {
-        mDialogResult = dialogResult;
     }
 }
