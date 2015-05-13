@@ -25,7 +25,6 @@ public class TestTransactionService extends AndroidTestCase {
 
     public void testPayTax(){
         Double result = 0.00;
-
         Double expected = 114.98;
         result = transacService.addTax(100.00);
         assertEquals(expected,result);

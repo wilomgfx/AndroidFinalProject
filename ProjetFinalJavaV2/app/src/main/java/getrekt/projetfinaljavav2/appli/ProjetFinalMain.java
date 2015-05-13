@@ -25,6 +25,7 @@ import getrekt.projetfinaljavav2.R;
 import getrekt.projetfinaljavav2.appli.gui.CustomDialog;
 import getrekt.projetfinaljavav2.appli.gui.DialogResult;
 import getrekt.projetfinaljavav2.appli.gui.MyAdapter;
+import getrekt.projetfinaljavav2.appli.gui.PaiementDialog;
 import getrekt.projetfinaljavav2.appli.gui.UpdateMethod;
 import getrekt.projetfinaljavav2.models.Product;
 import getrekt.projetfinaljavav2.models.Transaction;
@@ -88,8 +89,10 @@ public class ProjetFinalMain extends ActionBarActivity {
                 Transaction newTrans = new Transaction(m_currentProducts, new Date());
 
                 //serviceTransacs.save(newTrans);
-
-                serviceTransacs.printReceipt(m_currentProducts);
+                PaiementDialog pDialog = new PaiementDialog();
+                //TODO Changer en I18N
+                pDialog.show(getFragmentManager(),"Paiement d");
+                //serviceTransacs.printReceipt(m_currentProducts);
             }
         });
 
@@ -145,7 +148,7 @@ public class ProjetFinalMain extends ActionBarActivity {
                 txtTotal.setText(getString(R.string.total) + calculerTotal() + "$");
             }
         });
-
+        //TODO Changer en I18N
         d.show(getFragmentManager(),"Ajouter un produit");
     }
 

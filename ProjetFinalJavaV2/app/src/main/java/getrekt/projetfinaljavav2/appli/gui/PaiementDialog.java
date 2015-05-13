@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import getrekt.projetfinaljavav2.R;
 
@@ -32,25 +33,25 @@ public class PaiementDialog extends DialogFragment
 
 
         // Watch for button clicks.
-        Button buttonAdd = (Button) v.findViewById(R.id.btn_add);
+        Button buttonAdd = (Button) v.findViewById(R.id.btnPayer);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                Toast.makeText(getActivity().getApplicationContext(),null,Toast.LENGTH_SHORT).show();
             }
         });
 
         Button buttonCancel = (Button)v.findViewById(R.id.btn_cancel);
 
-        buttonCancel.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                dismiss();
-            }
-        });
+//        buttonCancel.setOnClickListener(new View.OnClickListener()
+//        {
+//            public void onClick(View v)
+//            {
+//                dismiss();
+//            }
+//        });
 
         return v;
     }
