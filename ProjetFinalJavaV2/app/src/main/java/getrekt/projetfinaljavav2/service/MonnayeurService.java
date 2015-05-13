@@ -43,6 +43,12 @@ public class MonnayeurService {
 
     }
 
+    /***
+     *  Pretty prints the change to the screen in a good looking string format
+     * @param change change to pretty print
+     * @return a pretty printed change to show to the client
+     * @throws CashException
+     */
     public String PrettyPrintChange(Change change) throws CashException {
         //pretty printing the change
         return  StringUtilsMonnayeur.toString(change);

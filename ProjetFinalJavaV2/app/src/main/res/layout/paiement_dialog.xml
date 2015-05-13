@@ -32,7 +32,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:text="0"
-                android:id="@+id/txt_100d" />
+                android:id="@+id/nbr100d" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                 android:inputType="number"
                 android:textSize="20sp"
                 android:textColor="#000"
-                android:id="@+id/txt_50d"
+                android:id="@+id/nbr50d"
                 android:text="0"
                 android:layout_weight="0.07" />
 
@@ -66,7 +66,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_20d"
+                android:id="@+id/nbr20d"
                 android:text="0"
                 android:layout_weight="0.08" />
 
@@ -102,7 +102,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_10d"
+                android:id="@+id/nbr10d"
                 android:text="0"
                 android:layout_weight="0.06" />
 
@@ -121,7 +121,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_5d"
+                android:id="@+id/nbr5d"
                 android:text="0"
                 android:layout_weight="0.08" />
 
@@ -140,7 +140,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_2d"
+                android:id="@+id/nbr2d"
                 android:text="0"
                 android:layout_weight="0.16" />
         </LinearLayout>
@@ -174,7 +174,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_1d"
+                android:id="@+id/nbr1d"
                 android:text="0"
                 android:layout_weight="0.06" />
 
@@ -193,7 +193,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_25c"
+                android:id="@+id/nbr25c"
                 android:text="0"
                 android:layout_weight="0.08" />
 
@@ -212,7 +212,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_10c"
+                android:id="@+id/nbr10c"
                 android:text="0"
                 android:layout_weight="0.16" />
         </LinearLayout>
@@ -246,7 +246,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_5c"
+                android:id="@+id/nbr5c"
                 android:text="0"
                 android:layout_weight="0.06" />
 
@@ -265,7 +265,7 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txt_1c"
+                android:id="@+id/nbr1c"
                 android:text="0"
                 android:layout_weight="0.08" />
         </LinearLayout>

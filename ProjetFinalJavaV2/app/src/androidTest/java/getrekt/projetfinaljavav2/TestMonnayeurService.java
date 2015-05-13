@@ -40,20 +40,5 @@ public class TestMonnayeurService extends AndroidTestCase {
         changeReel = moneyService.PayerAvecLaCaisse(18.3);
         assertEquals(change.totalValue(),changeReel.totalValue());
     }
-    public void testPayerReturnsBadAmount(){
-        LajoieCorriveauChange change = new LajoieCorriveauChange();
 
-        change.addItems(Money.bill5, 2);
-        change.addItems(Money.coin2, 4);
-        change.addItems(Money.coin10s, 3);
-        Change changeReel;
-
-        try {
-            changeReel = moneyService.PayerAvecLaCaisse(11.3);
-            assertFalse(change.totalValue() == changeReel.totalValue());
-        } catch (CashException e) {
-
-        }
-
-    }
 }
