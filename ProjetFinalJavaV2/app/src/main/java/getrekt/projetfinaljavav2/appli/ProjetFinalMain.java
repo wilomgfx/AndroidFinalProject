@@ -85,7 +85,7 @@ public class ProjetFinalMain extends ActionBarActivity {
         boutonPayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
                 Transaction newTrans = new Transaction(m_currentProducts, new Date());
 
                 //serviceTransacs.save(newTrans);

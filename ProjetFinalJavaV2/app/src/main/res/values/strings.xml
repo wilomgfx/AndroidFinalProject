@@ -51,5 +51,6 @@
 
     <!--Discount Dialog-->
     <string name="discountDialog_title">Gestion des rabais</string>
+    <string name="totalToPay">total</string>
 
 </resources>
