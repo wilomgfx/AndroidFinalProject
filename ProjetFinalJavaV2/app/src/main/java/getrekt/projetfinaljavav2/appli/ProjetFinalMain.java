@@ -24,6 +24,7 @@ import java.util.Random;
 import getrekt.projetfinaljavav2.R;
 import getrekt.projetfinaljavav2.appli.gui.CustomDialog;
 import getrekt.projetfinaljavav2.appli.gui.DialogResult;
+import getrekt.projetfinaljavav2.appli.gui.DiscountDialog;
 import getrekt.projetfinaljavav2.appli.gui.MyAdapter;
 import getrekt.projetfinaljavav2.appli.gui.PaiementDialog;
 import getrekt.projetfinaljavav2.appli.gui.UpdateMethod;
@@ -53,7 +54,15 @@ public class ProjetFinalMain extends ActionBarActivity {
             @Override
             public void launch() {
                 TextView txtTotal = (TextView)findViewById(R.id.txt_total);
-                txtTotal.setText(getString(R.string.total) + calculerTotal() + "$");
+
+                double currentTotal = calculerTotalRawDouble();
+
+                double newTot = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
+
+                DecimalFormat df = new DecimalFormat("#.00");
+                String totalString = df.format(newTot);
+
+                txtTotal.setText(getString(R.string.total) + totalString + "$");
             }
         });
         ListView list = (ListView)findViewById(R.id.lsv_items);
@@ -196,6 +205,33 @@ public class ProjetFinalMain extends ActionBarActivity {
     public void ShowDiscountDialog()
     {
         //TODO Gerer le dialogue de gestion des rabais et son retour ici.
+        DiscountDialog d = new DiscountDialog();
+        d.context = this;
+
+        d.mDialogResult = new UpdateMethod() {
+            @Override
+            public void launch() {
+                if(m_currentProducts.size() != 0)
+                {
+                    double currentTotal = calculerTotalRawDouble();
+
+                    double newTotal2pour1 = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
+                    //serviceTransacs.AppliquerProduitGratuit(m_currentProducts, newTotal2pour1);
+
+                    m_adapter.notifyDataSetChanged();
+
+
+                    TextView txtTotal = (TextView) findViewById(R.id.txt_total);
+
+                    DecimalFormat df = new DecimalFormat("#.00");
+                    String totalString = df.format(newTotal2pour1);
+
+                    txtTotal.setText(getString(R.string.total) + totalString + "$");
+                }
+            }
+        };
+
+        d.show(getFragmentManager(), "Gérer les rabais");
     }
 
     @Override
@@ -320,5 +356,17 @@ public class ProjetFinalMain extends ActionBarActivity {
         }
 
         return df.format(total);
+    }
+
+    private double calculerTotalRawDouble()
+    {
+        double total = 0;
+
+        for(TransactionItem transItem : m_currentProducts)
+        {
+            total += transItem.getQty() * transItem.getProduct().getPrice();
+        }
+
+        return total;
     }
 }

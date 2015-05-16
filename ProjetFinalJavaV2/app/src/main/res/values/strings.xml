@@ -48,9 +48,22 @@
     <!--List-->
     <string name="listItem_prodName">Produit</string>
     <string name="listItem_prodQty">Quantité</string>
+    <string name="listItem_shownQty">Quantité: </string>
 
     <!--Discount Dialog-->
     <string name="discountDialog_title">Gestion des rabais</string>
     <string name="totalToPay">total</string>
+
+    <!--Discount : Rabais 2 pour 1-->
+    <string name="rabais2pour1">Rabais 2 pour 1</string>
+    <string name="rabaisProduitGratuit">Produit Gratuit</string>
+    <string name="rabaisSeuilSansTaxes">Seuil sans taxes</string>
+    <string name="rabais2pour1_inputBarCode">Ajouter un produit par code barre...</string>
+    <string name="rabais2pour1_add">+</string>
+    <string name="rabais2pour1_alreadyThere">Ce produit est deja en 2 pour 1.</string>
+
+    <!--Misc-->
+    <string name="back">Retour</string>
+    <string name="productNotFound">Produit non trouvé.</string>
 
 </resources>

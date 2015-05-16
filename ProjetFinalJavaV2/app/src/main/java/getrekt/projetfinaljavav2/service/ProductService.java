@@ -32,11 +32,20 @@ public class ProductService {
         repoProduitGratuit = RepoRabaisProduitGratuit.get(context);
         repoRabais2Pour1 = RepoRabais2Pour1.get(context);
 
-        if(repoRabais2Pour1.getAll().size() !=0){
-            rabais2Pour1 = repoRabais2Pour1.getAll().get(0);
-        }
+        rabais2Pour1 = Rabais2Pour1.get(context);
+//        if(repoRabais2Pour1.getAll().size() !=0){
+//            rabais2Pour1 = repoRabais2Pour1.getAll().get(0);
+//        }
+//        else
+//        {
+//            rabais2Pour1 = Rabais2Pour1.get();
+//        }
         if(repoProduitGratuit.getAll().size() !=0){
             rabaisProduitGratuit = repoProduitGratuit.getAll().get(0);
+        }
+        else
+        {
+            //rabaisProduitGratuit = RabaisProduitGratuit.get();
         }
 
     }
@@ -73,7 +82,15 @@ public class ProductService {
 
     public Product getByCodeBarre(String pBarcode)
     {
-        return repoFichiers.getByCodeBarre(pBarcode);
+        try
+        {
+            Product prod = repoFichiers.getByCodeBarre(pBarcode);
+            return prod;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     public List<Product> getAll() {

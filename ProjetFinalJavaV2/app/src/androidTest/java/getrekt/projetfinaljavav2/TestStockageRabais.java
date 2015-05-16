@@ -31,7 +31,7 @@ public class TestStockageRabais extends AndroidTestCase {
     }
 
     public void testSaveAndGetAll(){
-        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get();
+        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get(this.getContext());
 
         List<Product> lstProds = new ArrayList<Product>();
 
@@ -49,7 +49,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
     public void testGetByID()
     {
-        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get();
+        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get(this.getContext());
 
         List<Product> lstProds = new ArrayList<Product>();
 
@@ -73,7 +73,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
     public void testDeleteOne()
     {
-        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get();
+        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get(this.getContext());
 
         List<Product> lstProds = new ArrayList<Product>();
 
@@ -95,7 +95,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
     public void testDeleteOne2()
     {
-        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get();
+        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get(this.getContext());
 
         List<Product> lstProds = new ArrayList<Product>();
 
@@ -117,7 +117,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
     public void testDeleteALL()
     {
-        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get();
+        Rabais2Pour1 rabais2Pour1 = Rabais2Pour1.get(this.getContext());
 
         List<Product> lstProds = new ArrayList<Product>();
 

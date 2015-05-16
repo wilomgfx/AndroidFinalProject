@@ -20,6 +20,7 @@
     <string name="action_create_prod">Create Products</string>
     <string name="action_clear_prod">Clear Products</string>
     <string name="action_create_order">Create Order</string>
+    <string name="action_manageDiscounts">Manage Discounts</string>
 
     <!--Payment Dialog-->
     <string name="money_100$">100$:</string>
@@ -46,7 +47,21 @@
     <!--List-->
     <string name="listItem_prodName">Product</string>
     <string name="listItem_prodQty">Quantity</string>
+    <string name="listItem_shownQty">Quantity: </string>
 
     <!--Discount Dialog-->
     <string name="discountDialog_title">Manage Discounts</string>
+    <string name="totalToPay">total</string>
+
+    <!--Discount : Rabais 2 pour 1-->
+    <string name="rabais2pour1">Discount 2 For 1</string>
+    <string name="rabaisProduitGratuit">Free Product</string>
+    <string name="rabaisSeuilSansTaxes">Tax-free amount</string>
+    <string name="rabais2pour1_inputBarCode">Add product by bar code...</string>
+    <string name="rabais2pour1_add">+</string>
+    <string name="rabais2pour1_alreadyThere">The product already has a 2 for 1.</string>
+
+    <!--Misc-->
+    <string name="back">Back</string>
+    <string name="productNotFound">Product not found.</string>
 </resources>

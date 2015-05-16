@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import getrekt.projetfinaljavav2.models.repo.RepoRabais2Pour1;
+
 /**
  * Created by Joel on 5/10/2015.
  */
@@ -36,10 +38,17 @@ public class Rabais2Pour1 {
         this.lstProduitsAvecRabais = new ArrayList<Product>();
     }
 
-    public static synchronized Rabais2Pour1 get()
+    public static synchronized Rabais2Pour1 get(Context context)
     {
         if(rabais == null)
-            rabais = new Rabais2Pour1();
+        {
+            RepoRabais2Pour1 rep = RepoRabais2Pour1.get(context);
+
+            if(rep.getAll().size() == 0)
+                rabais = new Rabais2Pour1();
+            else
+                rabais = rep.getAll().get(0);
+        }
 
         return rabais;
     }

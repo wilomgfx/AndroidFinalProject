@@ -74,7 +74,9 @@ public class MyAdapter extends ArrayAdapter<TransactionItem>
         row.findViewById(R.id.item_name).setTag(item);
 
         product_name.setText(item.getProduct().getProductName());
-        qty_item.setText("Quantité: " + item.getQty());
+
+        String quanti = getContext().getString(R.string.listItem_shownQty) + " " + Integer.toString(item.getQty());
+        qty_item.setText(quanti);
 
         return row;
     }

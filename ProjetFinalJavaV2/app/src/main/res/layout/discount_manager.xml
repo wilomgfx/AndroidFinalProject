@@ -6,22 +6,38 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/scanner"
-        android:id="@+id/btn_scanner" />
+        android:textSize="15dp"
+        android:width="200dp"
+        android:layout_gravity="center"
+        android:text="@string/rabais2pour1"
+        android:id="@+id/btn_rabais2pour1" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/scanner"
-        android:id="@+id/btn_scanner" />
+        android:textSize="15dp"
+        android:width="200dp"
+        android:layout_gravity="center"
+        android:text="@string/rabaisProduitGratuit"
+        android:id="@+id/btn_rabaisProduitGratuit" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/scanner"
-        android:id="@+id/btn_scanner" />
+        android:textSize="15dp"
+        android:width="200dp"
+        android:layout_gravity="center"
+        android:text="@string/rabaisSeuilSansTaxes"
+        android:id="@+id/btn_rabaisSeuilSansTaxes" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:width="200dp"
+        android:layout_gravity="center"
+        android:text="@string/back"
+        android:id="@+id/btn_rabaisBack" />
 
 </LinearLayout>

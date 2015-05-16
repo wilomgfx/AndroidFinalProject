@@ -13,8 +13,13 @@ import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
 import getrekt.projetfinaljavav2.models.Product;
+import getrekt.projetfinaljavav2.models.ProduitGratuit;
+import getrekt.projetfinaljavav2.models.Rabais2Pour1;
+import getrekt.projetfinaljavav2.models.RabaisProduitGratuit;
 import getrekt.projetfinaljavav2.models.Transaction;
 import getrekt.projetfinaljavav2.models.TransactionItem;
+import getrekt.projetfinaljavav2.models.repo.RepoRabais2Pour1;
+import getrekt.projetfinaljavav2.models.repo.RepoRabaisProduitGratuit;
 import getrekt.projetfinaljavav2.models.repo.RepositoryTransac;
 
 /**
@@ -25,11 +30,27 @@ public class TransactionService {
 
     private RepositoryTransac repoTrans;
 
+    private Rabais2Pour1 rabais2Pour1;
+    private RabaisProduitGratuit rabaisProduitGratuit;
+    private RepoRabais2Pour1 repoRabais2Pour1;
+    private RepoRabaisProduitGratuit repoProduitGratuit;
+
     public TransactionService(Context pContext)
     {
         this.context = pContext;
 
         repoTrans = RepositoryTransac.get(context);
+
+        repoProduitGratuit = RepoRabaisProduitGratuit.get(context);
+        repoRabais2Pour1 = RepoRabais2Pour1.get(context);
+
+        rabais2Pour1 = Rabais2Pour1.get(context);
+//        if(repoRabais2Pour1.getAll().size() !=0){
+//            rabais2Pour1 = repoRabais2Pour1.getAll().get(0);
+//        }
+        if(repoProduitGratuit.getAll().size() !=0){
+            rabaisProduitGratuit = repoProduitGratuit.getAll().get(0);
+        }
     }
 
     public void createStorage()
@@ -175,4 +196,40 @@ public class TransactionService {
 
         return rounded;
     }
+
+    public double Appliquer2Pour1(List<TransactionItem> t, double totalPresent)
+    {
+        for(TransactionItem item : t)
+        {
+            if(item.getQty() > 1)
+            {
+                for(Product p : rabais2Pour1.getProduitsRabais())
+                {
+                    if(p.getBarCode().equals(item.getProduct().getBarCode()))
+                    {
+                        int nbrOfCouples = item.getQty() / 2;
+
+                        double reduction = nbrOfCouples * item.getProduct().getPrice();
+
+                        totalPresent = (totalPresent - reduction);
+                    }
+                }
+            }
+        }
+
+        return totalPresent;
+    }
+
+    public void AppliquerProduitGratuit(List<TransactionItem> t, double totalPresent)
+    {
+        for(ProduitGratuit pg : rabaisProduitGratuit.getProduitsGratuits())
+        {
+            int nbrOfFreeItems = (int)(Math.floor(totalPresent / pg.getSeuil()));
+
+            TransactionItem ti = new TransactionItem(nbrOfFreeItems, pg.getProd());
+
+            t.add(ti);
+        }
+    }
+
 }
