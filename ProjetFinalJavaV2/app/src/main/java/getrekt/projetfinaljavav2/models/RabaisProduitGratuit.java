@@ -1,6 +1,11 @@
 package getrekt.projetfinaljavav2.models;
 
+import android.content.Context;
+
 import java.util.ArrayList;
+
+import getrekt.projetfinaljavav2.models.repo.RepoRabais2Pour1;
+import getrekt.projetfinaljavav2.models.repo.RepoRabaisProduitGratuit;
 
 /**
  * Created by Joel on 5/10/2015.
@@ -13,13 +18,20 @@ public class RabaisProduitGratuit {
 
     private static RabaisProduitGratuit rabais;
 
-//    public static synchronized RabaisProduitGratuit get()
-//    {
-//        if(rabais == null)
-//            rabais = new RabaisProduitGratuit();
-//
-//        return rabais;
-//    }
+    public static synchronized RabaisProduitGratuit get(Context context)
+    {
+        if(rabais == null)
+        {
+            RepoRabaisProduitGratuit rep = RepoRabaisProduitGratuit.get(context);
+
+            if(rep.getAll().size() == 0)
+                rabais = new RabaisProduitGratuit();
+            else
+                rabais = rep.getAll().get(0);
+        }
+
+        return rabais;
+    }
 
     public Long getId() {
         return id;
@@ -60,7 +72,7 @@ public class RabaisProduitGratuit {
         }
     }
 
-    public RabaisProduitGratuit()
+    private RabaisProduitGratuit()
     {
         this.produitsGratuits = new ArrayList<ProduitGratuit>();
     }
