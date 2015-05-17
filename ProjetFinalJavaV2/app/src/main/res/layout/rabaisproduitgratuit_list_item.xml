@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/rabaisProduitGratuit_item_prodName"
+        android:layout_width="0sp"
+        android:layout_weight="2"
+        android:layout_height="fill_parent"
+        android:text="@string/listItem_prodName"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/rabaisProduitGratuit_item_seuil"
+        android:layout_width="0sp"
+        android:layout_weight="2"
+        android:layout_height="fill_parent"
+        android:text="@string/listItem_seuil"
+        android:textAlignment="center"/>
+    <Button
+        android:text="-"
+        android:id="@+id/rabaisProduitGratuit_btnMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@drawable/button"/>
+</LinearLayout>

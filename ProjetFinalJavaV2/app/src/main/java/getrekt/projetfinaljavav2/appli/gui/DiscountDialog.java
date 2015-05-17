@@ -44,6 +44,7 @@ public class DiscountDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 DiscountProduitGratuit d = new DiscountProduitGratuit();
+                d.context = context;
                 d.show(getFragmentManager(), "Produit Gratuit");
             }
         });

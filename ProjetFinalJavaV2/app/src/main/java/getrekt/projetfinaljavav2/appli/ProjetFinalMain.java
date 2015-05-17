@@ -43,6 +43,7 @@ public class ProjetFinalMain extends ActionBarActivity {
     String test;
     ProductService serviceProducts;
     TransactionService serviceTransacs;
+    List<TransactionItem> m_freeProdsCurrent = new ArrayList<TransactionItem>();
     //RepositoryProduitsFichiers repoFich;
 
     @Override
@@ -53,16 +54,7 @@ public class ProjetFinalMain extends ActionBarActivity {
         MyAdapter adapter = new MyAdapter(ProjetFinalMain.this, m_currentProducts, new UpdateMethod() {
             @Override
             public void launch() {
-                TextView txtTotal = (TextView)findViewById(R.id.txt_total);
-
-                double currentTotal = calculerTotalRawDouble();
-
-                double newTot = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
-
-                DecimalFormat df = new DecimalFormat("#.00");
-                String totalString = df.format(newTot);
-
-                txtTotal.setText(getString(R.string.total) + totalString + "$");
+                ActualizeList();
             }
         });
         ListView list = (ListView)findViewById(R.id.lsv_items);
@@ -213,20 +205,21 @@ public class ProjetFinalMain extends ActionBarActivity {
             public void launch() {
                 if(m_currentProducts.size() != 0)
                 {
-                    double currentTotal = calculerTotalRawDouble();
-
-                    double newTotal2pour1 = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
-                    //serviceTransacs.AppliquerProduitGratuit(m_currentProducts, newTotal2pour1);
-
-                    m_adapter.notifyDataSetChanged();
-
-
-                    TextView txtTotal = (TextView) findViewById(R.id.txt_total);
-
-                    DecimalFormat df = new DecimalFormat("#.00");
-                    String totalString = df.format(newTotal2pour1);
-
-                    txtTotal.setText(getString(R.string.total) + totalString + "$");
+//                    double currentTotal = calculerTotalRawDouble();
+//
+//                    double newTotal2pour1 = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
+//                    //serviceTransacs.AppliquerProduitGratuit(m_currentProducts, newTotal2pour1);
+//
+//                    m_adapter.notifyDataSetChanged();
+//
+//
+//                    TextView txtTotal = (TextView) findViewById(R.id.txt_total);
+//
+//                    DecimalFormat df = new DecimalFormat("#.00");
+//                    String totalString = df.format(newTotal2pour1);
+//
+//                    txtTotal.setText(getString(R.string.total) + totalString + "$");
+                    ActualizeList();
                 }
             }
         };
@@ -306,6 +299,9 @@ public class ProjetFinalMain extends ActionBarActivity {
         if (id == R.id.action_clear_prod) {
             m_currentProducts.clear();
             serviceProducts.deleteAll();
+            serviceProducts.getRabais2Pour1().deleteAllRabais();
+            serviceProducts.getRabaisProduitGratuit().deleteAllRabais();
+
             m_adapter.notifyDataSetChanged();
             TextView txtTotal = (TextView)findViewById(R.id.txt_total);
             txtTotal.setText(getString(R.string.total) + calculerTotal() + "$");
@@ -325,9 +321,7 @@ public class ProjetFinalMain extends ActionBarActivity {
                 for(int i = 0; i < nbrOfProducts; i++)
                     m_currentProducts.add(serviceTransacs.generateRandomTransItem());
 
-                m_adapter.notifyDataSetChanged();
-                TextView txtTotal = (TextView) findViewById(R.id.txt_total);
-                txtTotal.setText(getString(R.string.total) + calculerTotal() + "$");
+                ActualizeList();
 
                 return true;
             }
@@ -369,4 +363,107 @@ public class ProjetFinalMain extends ActionBarActivity {
 
         return total;
     }
+
+    // Calculates the total of the transaction, processes discounts, formats the total...
+    private void ActualizeList()
+    {
+        TextView txtTotal = (TextView)findViewById(R.id.txt_total);
+
+        double currentTotal = calculerTotalRawDouble();
+
+        double newTot = serviceTransacs.Appliquer2Pour1(m_currentProducts, currentTotal);
+
+        List<TransactionItem> result = serviceTransacs.AppliquerProduitGratuit(m_currentProducts, newTot);
+
+        List<TransactionItem> copyList = new ArrayList<TransactionItem>(m_currentProducts);
+
+        for(int i = 0; i < m_currentProducts.size(); i++)
+        {
+            if(m_currentProducts.get(i).getProduct().getPrice().equals(0.00))
+            {
+                copyList.remove(i);
+            }
+        }
+
+        m_freeProdsCurrent = result;
+
+        for(TransactionItem item : result)
+        {
+            copyList.add(item);
+        }
+
+        // Refilling the list
+        m_currentProducts.clear();
+
+        for(TransactionItem item : copyList)
+        {
+            if(item.getQty() != 0)
+                m_currentProducts.add(item);
+        }
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        String totalString = df.format(newTot);
+
+        txtTotal.setText(getString(R.string.total) + totalString + "$");
+
+        m_adapter.notifyDataSetChanged();
+
+        // OLD CODE
+
+
+//        if(m_freeProdsCurrent.size() != 0)
+//        {
+//            List<TransactionItem> copyList = new ArrayList<TransactionItem>(m_currentProducts);
+//
+//            for(TransactionItem itemFree : m_freeProdsCurrent)
+//            {
+//                for(int i = 0; i < m_currentProducts.size(); i++)
+//                {
+//                    TransactionItem items = m_currentProducts.get(i);
+//
+//                    if(items.getProduct().getBarCode().equals(itemFree.getProduct().getBarCode()))
+//                    {
+//                        copyList.get(i).setQty(items.getQty() - itemFree.getQty());
+//                        if(copyList.get(i).getQty() == 0)
+//                            copyList.remove(i);
+//                    }
+//                }
+//            }
+//        }
+//
+//        m_freeProdsCurrent = result;
+//
+//        // Setting up a flag
+//        Long flag = Long.parseLong(Integer.toString(-5));
+//
+//        for(TransactionItem curItem : m_currentProducts)
+//        {
+//            for(TransactionItem freeItem : m_freeProdsCurrent)
+//            {
+//                if(freeItem.getProduct().getBarCode().equals(curItem.getProduct().getBarCode()))
+//                {
+//                    curItem.setQty(curItem.getQty() + freeItem.getQty());
+//
+//                    // Flag the free item
+//                    freeItem.setId(flag);
+//                }
+//            }
+//        }
+//
+//        double freeValue = 0.00;
+//
+//        for(TransactionItem item : m_freeProdsCurrent)
+//        {
+//            if(!item.getId().equals(flag))
+//            {
+//                m_currentProducts.add(item);
+//            }
+//
+//            freeValue += item.getQty() * item.getProduct().getPrice();
+//        }
+//
+//        // Removing the value of the free products, because the client does not pay for them.
+//        newTot -= freeValue;
+    }
 }
+

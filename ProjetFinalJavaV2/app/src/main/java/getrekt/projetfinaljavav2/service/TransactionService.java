@@ -7,6 +7,7 @@ import android.content.Context;
 import android.util.Log;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -45,12 +46,13 @@ public class TransactionService {
         repoRabais2Pour1 = RepoRabais2Pour1.get(context);
 
         rabais2Pour1 = Rabais2Pour1.get(context);
+        rabaisProduitGratuit = RabaisProduitGratuit.get(context);
 //        if(repoRabais2Pour1.getAll().size() !=0){
 //            rabais2Pour1 = repoRabais2Pour1.getAll().get(0);
 //        }
-        if(repoProduitGratuit.getAll().size() !=0){
-            rabaisProduitGratuit = repoProduitGratuit.getAll().get(0);
-        }
+//        if(repoProduitGratuit.getAll().size() !=0){
+//            rabaisProduitGratuit = repoProduitGratuit.getAll().get(0);
+//        }
     }
 
     public void createStorage()
@@ -220,16 +222,24 @@ public class TransactionService {
         return totalPresent;
     }
 
-    public void AppliquerProduitGratuit(List<TransactionItem> t, double totalPresent)
+    public List<TransactionItem> AppliquerProduitGratuit(List<TransactionItem> t, double totalPresent)
     {
+        List<TransactionItem> newList = new ArrayList<TransactionItem>();
+
         for(ProduitGratuit pg : rabaisProduitGratuit.getProduitsGratuits())
         {
             int nbrOfFreeItems = (int)(Math.floor(totalPresent / pg.getSeuil()));
 
-            TransactionItem ti = new TransactionItem(nbrOfFreeItems, pg.getProd());
+            Product prodToAdd = new Product(pg.getProd());
+            prodToAdd.setPrice(0.00);
+            prodToAdd.setDesc("Produit gratuit par tranche de " + Double.toString(pg.getSeuil()));
+            prodToAdd.setProductName(prodToAdd.getProductName() + " (Gratuit)");
+            TransactionItem ti = new TransactionItem(nbrOfFreeItems, prodToAdd);
 
-            t.add(ti);
+            newList.add(ti);
         }
+
+        return newList;
     }
 
 }

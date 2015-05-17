@@ -48,6 +48,7 @@
     <string name="listItem_prodName">Product</string>
     <string name="listItem_prodQty">Quantity</string>
     <string name="listItem_shownQty">Quantity: </string>
+    <string name="listItem_seuil">Seuil: </string>
 
     <!--Discount Dialog-->
     <string name="discountDialog_title">Manage Discounts</string>
@@ -60,6 +61,11 @@
     <string name="rabais2pour1_inputBarCode">Add product by bar code...</string>
     <string name="rabais2pour1_add">+</string>
     <string name="rabais2pour1_alreadyThere">The product already has a 2 for 1.</string>
+
+    <!--Discount : Rabais Produit Gratuit-->
+    <string name="rabaisProduitGratuit_inputBarCode">Add product by bar code...</string>
+    <string name="rabaisProduitGratuit_Seuil">Amount...</string>
+    <string name="rabaisProduitGratuit_alreadyThere">The product already has a discount of this type.</string>
 
     <!--Misc-->
     <string name="back">Back</string>

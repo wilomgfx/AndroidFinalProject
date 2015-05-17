@@ -3,6 +3,7 @@ package getrekt.projetfinaljavav2.models;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import getrekt.projetfinaljavav2.models.repo.RepoRabais2Pour1;
 import getrekt.projetfinaljavav2.models.repo.RepoRabaisProduitGratuit;
@@ -14,7 +15,7 @@ public class RabaisProduitGratuit {
 
     private Long id;
 
-    private ArrayList<ProduitGratuit> produitsGratuits;
+    private List<ProduitGratuit> produitsGratuits;
 
     private static RabaisProduitGratuit rabais;
 
@@ -41,11 +42,11 @@ public class RabaisProduitGratuit {
         this.id = id;
     }
 
-    public ArrayList<ProduitGratuit> getProduitsGratuits() {
+    public List<ProduitGratuit> getProduitsGratuits() {
         return produitsGratuits;
     }
 
-    public void setProduitsGratuits(ArrayList<ProduitGratuit> produitsGratuits) {
+    public void setProduitsGratuits(List<ProduitGratuit> produitsGratuits) {
         this.produitsGratuits = produitsGratuits;
     }
 
@@ -70,6 +71,11 @@ public class RabaisProduitGratuit {
                 break;
             }
         }
+    }
+
+    public void deleteAllRabais()
+    {
+        produitsGratuits.clear();
     }
 
     private RabaisProduitGratuit()

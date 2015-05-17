@@ -116,4 +116,12 @@ public class Product {
             throw new IllegalArgumentException();
         }
     }
+
+    public Product(Product pOldProd)
+    {
+        m_productName = pOldProd.getProductName();
+        m_barCode = pOldProd.getBarCode();
+        m_desc = pOldProd.getDesc();
+        m_price = pOldProd.getPrice();
+    }
 }
