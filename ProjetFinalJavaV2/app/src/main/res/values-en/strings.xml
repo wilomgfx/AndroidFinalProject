@@ -70,6 +70,4 @@
     <!--Misc-->
     <string name="back">Back</string>
     <string name="productNotFound">Product not found.</string>
-    <string name="no_tax_amount">No tax Amount : </string>
-    <string name="add_tax_free_amount">Add tax free amount</string>
 </resources>
