@@ -31,6 +31,15 @@ public class PaiementDialog extends DialogFragment
     TransactionService transacService;
     MonnayeurService moneyService;
 
+    private String total;
+
+    public void setTotal(String total){
+        this.total = total;
+    }
+    public String getTotal(){
+        return this.total;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -104,20 +113,25 @@ public class PaiementDialog extends DialogFragment
                 Toast.makeText(getActivity().getApplicationContext(),"total "+ valeurTotalPayment.toString(),Toast.LENGTH_SHORT).show();
                 Log.i("DebuggingPaiementDialog", valeurTotalPayment.toString());
 
+                Change changeResult = null;
                 try {
-                    Change changeResult;
                     changeResult =  moneyService.PayerAvecLaCaisse(valeurTotalPayment/100.00);
-
-                    //TODO CHANGE TO I18N
-
-                    dismiss();
                     Log.i("DebuggingPaiementDialog", moneyService.PrettyPrintChange(changeResult));
+                    MonnayeurResultDialog monnayeurDialog = new MonnayeurResultDialog();
+                    monnayeurDialog.setMonnayeurPrint(moneyService.PrettyPrintChange(changeResult));
+                    monnayeurDialog.setTotal(total);
+                    //TODO CHANGE TO I18N
+                    monnayeurDialog.show(getFragmentManager(),"Change to handle");
 
                 } catch (NotEnoughMoneyException e) {
                     Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
                 } catch (CashException e) {
                     Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
                 }
+
+
+
+                dismiss();
             }
         });
 

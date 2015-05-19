@@ -91,6 +91,7 @@ public class ProjetFinalMain extends ActionBarActivity {
 
                 //serviceTransacs.save(newTrans);
                 PaiementDialog pDialog = new PaiementDialog();
+                pDialog.setTotal(calculerTotal());
                 //TODO Changer en I18N
                 pDialog.show(getFragmentManager(),"Paiement d");
                 //serviceTransacs.printReceipt(m_currentProducts);
