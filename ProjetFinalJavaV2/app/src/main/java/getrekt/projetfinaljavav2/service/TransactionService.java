@@ -21,6 +21,7 @@ import getrekt.projetfinaljavav2.models.Transaction;
 import getrekt.projetfinaljavav2.models.TransactionItem;
 import getrekt.projetfinaljavav2.models.repo.RepoRabais2Pour1;
 import getrekt.projetfinaljavav2.models.repo.RepoRabaisProduitGratuit;
+import getrekt.projetfinaljavav2.models.repo.RepoSansTaxes;
 import getrekt.projetfinaljavav2.models.repo.RepositoryTransac;
 
 /**
@@ -36,6 +37,8 @@ public class TransactionService {
     private RepoRabais2Pour1 repoRabais2Pour1;
     private RepoRabaisProduitGratuit repoProduitGratuit;
 
+    private RepoSansTaxes repoSansTaxes;
+
     public TransactionService(Context pContext)
     {
         this.context = pContext;
@@ -47,6 +50,8 @@ public class TransactionService {
 
         rabais2Pour1 = Rabais2Pour1.get(context);
         rabaisProduitGratuit = RabaisProduitGratuit.get(context);
+
+        repoSansTaxes= RepoSansTaxes.get(context);
 //        if(repoRabais2Pour1.getAll().size() !=0){
 //            rabais2Pour1 = repoRabais2Pour1.getAll().get(0);
 //        }
@@ -125,6 +130,9 @@ public class TransactionService {
     public void deleteAll() {
         repoTrans.deleteAll();
     }
+    public Double getNoTaxAmount(){
+        return repoSansTaxes.getIt();
+    }
 
     public TransactionItem generateRandomTransItem()
     {
@@ -185,8 +193,15 @@ public class TransactionService {
      * @param montantTotal montantTotal de la facture
      * @return le total avec la taxe appliquee
      */
-    public Double addTax(Double montantTotal){
+    public Double addTaxToAmount(Double montantTotal){
         //http://www.calculconversion.com/calcul-taxes-tps-tvq.html
+        Double montantSeuilSansTaxes = repoSansTaxes.getIt();
+        if(montantTotal > montantSeuilSansTaxes) {
+            montantTotal-=montantSeuilSansTaxes;
+        }
+        else if(montantTotal <= montantSeuilSansTaxes){
+            return montantTotal;
+        }
         Double montantAvecTaxe = 0.00;
         Double tps = 5.00;
         Double tvq = 9.975;
@@ -197,6 +212,18 @@ public class TransactionService {
         double rounded = (double) Math.round(montantAvecTaxe * 100.0) / 100.0;
 
         return rounded;
+    }
+    public void AppliquerSeuilSansTaxes(Double d){
+
+        //On en veut juste un, donc on le save si il existe pas, sinon on le delete et on le save.
+        if(!repoSansTaxes.checkIfExits()){
+            repoSansTaxes.save(d);
+        }
+        else{
+            repoSansTaxes.deleteIt();
+            repoSansTaxes.save(d);
+        }
+
     }
 
     public double Appliquer2Pour1(List<TransactionItem> t, double totalPresent)

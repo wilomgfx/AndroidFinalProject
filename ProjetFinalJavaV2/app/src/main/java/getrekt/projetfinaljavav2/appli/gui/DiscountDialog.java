@@ -53,6 +53,10 @@ public class DiscountDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 // Dialogue pour le seuil sans taxes.
+                //TODO I18N pour title de dialog
+                SeuilSansTaxeDialog d = new SeuilSansTaxeDialog();
+                d.context = context;
+                d.show(getFragmentManager(),"Seuil sans taxes");
             }
         });
 
