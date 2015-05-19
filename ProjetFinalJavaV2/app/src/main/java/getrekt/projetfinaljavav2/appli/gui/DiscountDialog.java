@@ -26,7 +26,7 @@ public class DiscountDialog extends DialogFragment {
 
         // Sets title area
         getDialog().setTitle(getString(R.string.discountDialog_title));
-
+        //TODO I18N pour title de dialog
         final Button btn2Pour1 = (Button)v.findViewById(R.id.btn_rabais2pour1);
         final Button btnProduitGratuit = (Button)v.findViewById(R.id.btn_rabaisProduitGratuit);
         final Button btnSeuilSansTaxes = (Button)v.findViewById(R.id.btn_rabaisSeuilSansTaxes);
@@ -53,6 +53,9 @@ public class DiscountDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 // Dialogue pour le seuil sans taxes.
+                SeuilSansTaxeDialog d = new SeuilSansTaxeDialog();
+                d.context = context;
+                d.show(getFragmentManager(),"Seuil sans taxes");
             }
         });
 
