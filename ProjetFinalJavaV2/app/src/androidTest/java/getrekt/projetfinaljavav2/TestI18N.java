@@ -34,7 +34,7 @@ public class TestI18N extends AndroidTestCase {
         assertEquals("+ product", string);
 
         string = getContext().getString(R.string.total);
-        assertEquals("Total: ", string);
+        assertEquals("Total:", string);
 
         string = getContext().getString(R.string.pay);
         assertEquals("Pay", string);
@@ -65,7 +65,7 @@ public class TestI18N extends AndroidTestCase {
         assertEquals("+ produit", string);
 
         string = getContext().getString(R.string.total);
-        assertEquals("Total: ", string);
+        assertEquals("Total:", string);
 
         string = getContext().getString(R.string.pay);
         assertEquals("Payer", string);
@@ -77,7 +77,7 @@ public class TestI18N extends AndroidTestCase {
         assertEquals("Création des produits...", string);
 
         string = getContext().getString(R.string.menu_productsClear);
-        assertEquals("Produits de supprimés.", string);
+        assertEquals("Produits supprimés.", string);
 
         string = getContext().getString(R.string.menu_orderCreate);
         assertEquals("Création d\'une commande...", string);
