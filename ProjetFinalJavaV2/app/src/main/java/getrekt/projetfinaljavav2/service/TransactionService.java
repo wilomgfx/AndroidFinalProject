@@ -155,11 +155,14 @@ public class TransactionService {
         Log.i("Facture", "=======================================FACTURE=======================================");
         Log.i("Facture","=====================================================================================");
 
+        List<Product> lst2Pour1 = rabais2Pour1.getProduitsRabais();
+
+        DecimalFormat df = new DecimalFormat("#0.00");
+
         for(TransactionItem transItem : lstItems)
         {
             Log.i("Facture","| " + transItem.getProduct().getBarCode());
 
-            DecimalFormat df = new DecimalFormat("#0.00");
             StringBuilder line = new StringBuilder("                                                       ");
             if(transItem.getQty() > 1)
             {
@@ -180,9 +183,48 @@ public class TransactionService {
             }
 
             Log.i("Facture","|   " + line.toString());
+
+            for(Product p : lst2Pour1)
+            {
+                if(p.getBarCode().equals(transItem.getProduct().getBarCode()))
+                {
+                    Log.i("Facture", "| " + "Produit en 2 pour 1");
+                }
+            }
+
+            if(transItem.getProduct().getDesc().contains("Produit gratuit"))
+            {
+                Log.i("Facture", "| " + transItem.getProduct().getDesc());
+            }
+
             Log.i("Facture", "|");
         }
 
+        double total = 0.00;
+
+        for(TransactionItem transItem : lstItems)
+        {
+            total += transItem.getQty() * transItem.getProduct().getPrice();
+        }
+
+        total = Appliquer2Pour1(lstItems, total);
+        double totalAvecTaxes = addTaxToAmount(total);
+
+        double montanttps = 0;
+        double montanttvq = 0;
+
+        if(total != totalAvecTaxes)
+        {
+            Double tps = 5.00;
+            Double tvq = 9.975;
+            Double montantTps = total * (tps/100);
+            Double montantTvq = total * (tvq/100);
+        }
+
+        Log.i("Facture","Total sans taxes :" + df.format(total));
+        Log.i("Facture","TPS :" + Double.toString(montanttps));
+        Log.i("Facture","TVQ :" + Double.toString(montanttvq));
+        Log.i("Facture","Total : " + df.format(totalAvecTaxes));
 
         Log.i("Facture","=====================================================================================");
         Log.i("Facture","=====================================================================================");
