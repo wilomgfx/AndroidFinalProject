@@ -73,6 +73,8 @@
     <string name="productNotFound">Produit non trouvé.</string>
     <string name="no_tax_amount">Seuil sans taxes : </string>
     <string name="add_tax_free_amount">Ajouter le seuil sans taxes</string>
+    <string name="tax_freeAmount">Seuil Sans taxes</string>
+    <string name="tax_freeIsnow">Le montant sans taxes est maintenant : </string>
 
 
 </resources>

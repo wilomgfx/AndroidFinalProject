@@ -13,6 +13,7 @@ import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
 
+import getrekt.projetfinaljavav2.models.InvalidDataException;
 import getrekt.projetfinaljavav2.models.Product;
 import getrekt.projetfinaljavav2.models.ProduitGratuit;
 import getrekt.projetfinaljavav2.models.Rabais2Pour1;
@@ -214,7 +215,10 @@ public class TransactionService {
 
         return rounded;
     }
-    public void AppliquerSeuilSansTaxes(Double d){
+    public void AppliquerSeuilSansTaxes(Double d) throws InvalidDataException{
+
+        if(d.isNaN() || d < 0)
+            throw new InvalidDataException("Le montant doit être un montant possitif");
 
         //On en veut juste un, donc on le save si il existe pas, sinon on le delete et on le save.
         if(!repoSansTaxes.checkIfExits()){

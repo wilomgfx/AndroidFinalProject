@@ -129,8 +129,6 @@ public class PaiementDialog extends DialogFragment
                     Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
                 }
 
-
-
                 dismiss();
             }
         });
