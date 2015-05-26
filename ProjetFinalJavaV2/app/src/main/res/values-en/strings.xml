@@ -74,4 +74,11 @@
     <string name="add_tax_free_amount">Add tax free amount</string>
     <string name="tax_freeAmount">Tax Free Amount</string>
     <string name="tax_freeIsnow">The tax free amout is now  : </string>
+
+    <!--Facture-->
+    <string name="receipt_receiptName">RECEIPT</string>
+    <string name="receipt_2For1">2 For 1 on this product</string>
+    <string name="receipt_freeProd">Free with every amount of </string>
+    <string name="receipt_totalWithoutTaxes">Total without taxes: </string>
+    <string name="receipt_free">(Free)</string>
 </resources>
