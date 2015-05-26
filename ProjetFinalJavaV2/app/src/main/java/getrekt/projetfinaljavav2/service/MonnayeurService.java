@@ -34,13 +34,21 @@ public class MonnayeurService {
 
     }
 
-    public Change PayerAvecLaCaisse(Double amount,Double montantTotalDue) throws CashException,NotEnoughtMoneyToPay {
+    public Change PayerAvecLaCaisse(Double amountGiven,Double montantTotalDue) throws CashException,NotEnoughtMoneyToPay {
 
-        if(amount < montantTotalDue){
-            throw  new NotEnoughtMoneyToPay("Not enought money added... amount to pay : "+montantTotalDue + " amount given : " + amount);
+        if(amountGiven < montantTotalDue){
+            throw  new NotEnoughtMoneyToPay("Not enought money added... amount to pay : "+montantTotalDue + " amount given : " + amountGiven);
+        }
+        if(amountGiven >= montantTotalDue){
+            Double newAmount = amountGiven-montantTotalDue;
+            //rounding to 2 digits
+            newAmount = (double)Math.round(newAmount *100)/100;
+
+            Change result = regMachine.computeChange(/*(float) float ?*/ newAmount, cashReg);
+            return  result;
         }
 
-        Change result = regMachine.computeChange(/*(float) float ?*/ amount, cashReg);
+        Change result = regMachine.computeChange(/*(float) float ?*/ amountGiven, cashReg);
 
         //pretty printing the change
         return  result;
