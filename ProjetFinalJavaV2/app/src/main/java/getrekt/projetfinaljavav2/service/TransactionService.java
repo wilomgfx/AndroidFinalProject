@@ -255,12 +255,24 @@ public class TransactionService {
     public Double addTaxToAmount(Double montantTotal){
         //http://www.calculconversion.com/calcul-taxes-tps-tvq.html
         Double montantSeuilSansTaxes = repoSansTaxes.getIt();
-
         double rounded = 0.00;
-        if(montantSeuilSansTaxes != null && montantTotal >= montantSeuilSansTaxes) {
+        //si le seuil est set a 0.00 manuellement ou qu'il n'y en pas.
+        if(montantSeuilSansTaxes == 0.00 || montantSeuilSansTaxes == null) {
+            Double montantAvecTaxe = 0.00;
+            Double tps = 5.00;
+            Double tvq = 9.975;
+            Double montantTps = montantTotal * (tps/100);
+            Double montantTvq = montantTotal * (tvq/100);
+            montantAvecTaxe =  montantTotal + (montantTps + montantTvq);
+
+            rounded = (double) Math.round(montantAvecTaxe * 100.0) / 100.0;
+            return rounded;
+        }
+
+        if(montantTotal >= montantSeuilSansTaxes) {
             return montantTotal;
         }
-        else if(montantSeuilSansTaxes == null || montantTotal < montantSeuilSansTaxes){
+        else if(montantTotal < montantSeuilSansTaxes){
             Double montantAvecTaxe = 0.00;
             Double tps = 5.00;
             Double tvq = 9.975;

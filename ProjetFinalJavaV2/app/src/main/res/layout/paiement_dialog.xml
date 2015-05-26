@@ -283,6 +283,7 @@
             android:textSize="40sp"
             android:textColor="#000080"
             android:text="@string/totalToPay"
+            android:id="@+id/txt_total_Paiement"
             android:layout_gravity="center_horizontal"
             android:gravity="right"/>
         <Button

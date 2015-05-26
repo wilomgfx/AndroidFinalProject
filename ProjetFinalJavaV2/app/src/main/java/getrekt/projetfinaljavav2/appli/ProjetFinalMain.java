@@ -83,20 +83,29 @@ public class ProjetFinalMain extends ActionBarActivity {
         });
 
         //TODO ajouter le printreceipt dans le dialog paiementDialog pour effectuer la transaction.
-        boutonPayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
-                Transaction newTrans = new Transaction(m_currentProducts, new Date());
-                serviceTransacs.printReceipt(newTrans.getTransItems());
-                //serviceTransacs.save(newTrans);
-                PaiementDialog pDialog = new PaiementDialog();
-                pDialog.setTotal(calculerTotal());
-                //TODO Changer en I18N
-                pDialog.show(getFragmentManager(),"Paiement d");
-                //serviceTransacs.printReceipt(m_currentProducts);
-            }
-        });
+
+
+            boutonPayer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String totalSofar = calculerTotal();
+                    if(!totalSofar.equals(".00")) {
+                        // Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
+                        Transaction newTrans = new Transaction(m_currentProducts, new Date());
+                        serviceTransacs.printReceipt(newTrans.getTransItems());
+                        //serviceTransacs.save(newTrans);
+                        PaiementDialog pDialog = new PaiementDialog();
+                        pDialog.setTotal(calculerTotal());
+                        //TODO Changer en I18N
+                        pDialog.show(getFragmentManager(), "Paiement d");
+                        //serviceTransacs.printReceipt(m_currentProducts);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), getString(R.string.need_something_to_pay), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
 
         serviceProducts = new ProductService(this);
         serviceTransacs = new TransactionService(this);

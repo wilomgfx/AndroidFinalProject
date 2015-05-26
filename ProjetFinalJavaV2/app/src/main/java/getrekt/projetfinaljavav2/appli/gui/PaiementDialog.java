@@ -19,6 +19,7 @@ import java.util.List;
 
 import getrekt.projetfinaljavav2.R;
 import getrekt.projetfinaljavav2.appli.ProjetFinalMain;
+import getrekt.projetfinaljavav2.models.NotEnoughtMoneyToPay;
 import getrekt.projetfinaljavav2.monnayeur.CashException;
 import getrekt.projetfinaljavav2.monnayeur.Change;
 import getrekt.projetfinaljavav2.monnayeur.NotEnoughMoneyException;
@@ -63,20 +64,23 @@ public class PaiementDialog extends DialogFragment
         final EditText nbr10c = (EditText) v.findViewById(R.id.nbr10c);
         final EditText nbr5c = (EditText) v.findViewById(R.id.nbr5c);
         final EditText nbr1c = (EditText) v.findViewById(R.id.nbr1c);
+        final TextView txtTotal = (TextView) v.findViewById(R.id.txt_total_Paiement);
+
+        txtTotal.setText(total+"$");
 
         //Add to list to loop on.
-        final List<EditText> lstEditTexts = new ArrayList<>();
-        lstEditTexts.add(nbr100);
-        lstEditTexts.add(nbr50);
-        lstEditTexts.add(nbr20);
-        lstEditTexts.add(nbr10);
-        lstEditTexts.add(nbr5);
-        lstEditTexts.add(nbr2);
-        lstEditTexts.add(nbr1);
-        lstEditTexts.add(nbr25c);
-        lstEditTexts.add(nbr10c);
-        lstEditTexts.add(nbr5c);
-        lstEditTexts.add(nbr1c);
+//        final List<EditText> lstEditTexts = new ArrayList<>();
+//        lstEditTexts.add(nbr100);
+//        lstEditTexts.add(nbr50);
+//        lstEditTexts.add(nbr20);
+//        lstEditTexts.add(nbr10);
+//        lstEditTexts.add(nbr5);
+//        lstEditTexts.add(nbr2);
+//        lstEditTexts.add(nbr1);
+//        lstEditTexts.add(nbr25c);
+//        lstEditTexts.add(nbr10c);
+//        lstEditTexts.add(nbr5c);
+//        lstEditTexts.add(nbr1c);
 
        /* final Double total = Double.parseDouble(nbr100.getText().toString()) + Double.parseDouble(nbr50.getText().toString()) + Double.parseDouble(nbr20.getText().toString()) +
                 Double.parseDouble(nbr10.getText().toString()) + Double.parseDouble(nbr5.getText().toString()) + Double.parseDouble(nbr2.getText().toString()) +
@@ -110,26 +114,29 @@ public class PaiementDialog extends DialogFragment
                 Integer val1c = Integer.parseInt(nbr1c.getText().toString())*1;
 
                 Integer valeurTotalPayment = val100d+val50d+val20d+val10d+val5d+val2d+val1d+ val25c+val10c+val5c+val1c;
-                Toast.makeText(getActivity().getApplicationContext(),"total "+ valeurTotalPayment.toString(),Toast.LENGTH_SHORT).show();
-                Log.i("DebuggingPaiementDialog", valeurTotalPayment.toString());
+               // Toast.makeText(getActivity().getApplicationContext(),"total "+ valeurTotalPayment.toString(),Toast.LENGTH_SHORT).show();
+              //  Log.i("DebuggingPaiementDialog", valeurTotalPayment.toString());
 
                 Change changeResult = null;
                 try {
-                    changeResult =  moneyService.PayerAvecLaCaisse(valeurTotalPayment/100.00);
+                    //on passe le total et le montant que le client veut payer pour verifier si c'est asser d'argent.
+                    changeResult =  moneyService.PayerAvecLaCaisse(valeurTotalPayment/100.00,Double.parseDouble(total));
                     Log.i("DebuggingPaiementDialog", moneyService.PrettyPrintChange(changeResult));
                     MonnayeurResultDialog monnayeurDialog = new MonnayeurResultDialog();
                     monnayeurDialog.setMonnayeurPrint(moneyService.PrettyPrintChange(changeResult));
                     monnayeurDialog.setTotal(total);
                     //TODO CHANGE TO I18N
                     monnayeurDialog.show(getFragmentManager(),"Change to handle");
+                    dismiss();
 
                 } catch (NotEnoughMoneyException e) {
                     Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
                 } catch (CashException e) {
                     Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
+                } catch (NotEnoughtMoneyToPay e) {
+                    Toast.makeText(getActivity().getApplicationContext(),e.getMessage() ,Toast.LENGTH_LONG).show();
                 }
 
-                dismiss();
             }
         });
 

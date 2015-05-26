@@ -2,6 +2,7 @@ package getrekt.projetfinaljavav2.service;
 
 import android.content.Context;
 
+import getrekt.projetfinaljavav2.models.NotEnoughtMoneyToPay;
 import getrekt.projetfinaljavav2.monnayeur.CashException;
 import getrekt.projetfinaljavav2.monnayeur.CashRegister;
 import getrekt.projetfinaljavav2.monnayeur.Change;
@@ -33,7 +34,11 @@ public class MonnayeurService {
 
     }
 
-    public Change PayerAvecLaCaisse(Double amount) throws CashException {
+    public Change PayerAvecLaCaisse(Double amount,Double montantTotalDue) throws CashException,NotEnoughtMoneyToPay {
+
+        if(amount < montantTotalDue){
+            throw  new NotEnoughtMoneyToPay("Not enought money added... amount to pay : "+montantTotalDue + " amount given : " + amount);
+        }
 
         Change result = regMachine.computeChange(/*(float) float ?*/ amount, cashReg);
 
