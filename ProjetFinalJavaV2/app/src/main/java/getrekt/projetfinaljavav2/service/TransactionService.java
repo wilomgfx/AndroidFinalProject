@@ -238,20 +238,21 @@ public class TransactionService {
     public Double addTaxToAmount(Double montantTotal){
         //http://www.calculconversion.com/calcul-taxes-tps-tvq.html
         Double montantSeuilSansTaxes = repoSansTaxes.getIt();
-        if(montantTotal > montantSeuilSansTaxes) {
-            montantTotal-=montantSeuilSansTaxes;
-        }
-        else if(montantTotal <= montantSeuilSansTaxes){
+        double rounded = 0.00;
+        if(montantTotal >= montantSeuilSansTaxes) {
             return montantTotal;
         }
-        Double montantAvecTaxe = 0.00;
-        Double tps = 5.00;
-        Double tvq = 9.975;
-        Double montantTps = montantTotal * (tps/100);
-        Double montantTvq = montantTotal * (tvq/100);
-        montantAvecTaxe =  montantTotal + (montantTps + montantTvq);
+        else if(montantTotal < montantSeuilSansTaxes){
+            Double montantAvecTaxe = 0.00;
+            Double tps = 5.00;
+            Double tvq = 9.975;
+            Double montantTps = montantTotal * (tps/100);
+            Double montantTvq = montantTotal * (tvq/100);
+            montantAvecTaxe =  montantTotal + (montantTps + montantTvq);
 
-        double rounded = (double) Math.round(montantAvecTaxe * 100.0) / 100.0;
+            rounded = (double) Math.round(montantAvecTaxe * 100.0) / 100.0;
+        }
+
 
         return rounded;
     }
