@@ -15,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import getrekt.projetfinaljavav2.R;
 import getrekt.projetfinaljavav2.appli.ProjetFinalMain;
 import getrekt.projetfinaljavav2.models.NotEnoughtMoneyToPay;
+import getrekt.projetfinaljavav2.models.Transaction;
+import getrekt.projetfinaljavav2.models.TransactionItem;
 import getrekt.projetfinaljavav2.monnayeur.CashException;
 import getrekt.projetfinaljavav2.monnayeur.Change;
 import getrekt.projetfinaljavav2.monnayeur.NotEnoughMoneyException;
@@ -33,6 +36,8 @@ public class PaiementDialog extends DialogFragment
     MonnayeurService moneyService;
 
     private String total;
+
+    public   List<TransactionItem> currentProducts;
 
     public void setTotal(String total){
         this.total = total;
@@ -127,6 +132,9 @@ public class PaiementDialog extends DialogFragment
                     monnayeurDialog.setTotal(total);
                     //TODO CHANGE TO I18N
                     monnayeurDialog.show(getFragmentManager(),"Change to handle");
+                    Transaction newTrans = new Transaction(currentProducts, new Date());
+                    transacService.printReceipt(newTrans.getTransItems());
+                    transacService.save(newTrans);
                     dismiss();
 
                 } catch (NotEnoughMoneyException e) {
