@@ -88,7 +88,7 @@ public class ProjetFinalMain extends ActionBarActivity {
             public void onClick(View v) {
                // Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
                 Transaction newTrans = new Transaction(m_currentProducts, new Date());
-
+                serviceTransacs.printReceipt(newTrans.getTransItems());
                 //serviceTransacs.save(newTrans);
                 PaiementDialog pDialog = new PaiementDialog();
                 pDialog.setTotal(calculerTotal());

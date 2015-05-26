@@ -74,5 +74,11 @@
     <string name="no_tax_amount">Seuil sans taxes : </string>
     <string name="add_tax_free_amount">Ajouter le seuil sans taxes</string>
 
+    <!--Facture-->
+    <string name="receipt_receiptName">FACTURE</string>
+    <string name="receipt_2For1">2 Produit en 2 pour 1</string>
+    <string name="receipt_freeProd">Produit gratuit par trache de </string>
+    <string name="receipt_totalWithoutTaxes">Total sans taxes: </string>
+    <string name="receipt_free">(Gratuit)</string>
 
 </resources>

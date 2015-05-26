@@ -13,6 +13,7 @@ import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
 
+import getrekt.projetfinaljavav2.R;
 import getrekt.projetfinaljavav2.models.Product;
 import getrekt.projetfinaljavav2.models.ProduitGratuit;
 import getrekt.projetfinaljavav2.models.Rabais2Pour1;
@@ -152,7 +153,7 @@ public class TransactionService {
 
     public void printReceipt(List<TransactionItem> lstItems)
     {
-        Log.i("Facture", "=======================================FACTURE=======================================");
+        Log.i("Facture", "=======================================" + context.getString(R.string.receipt_receiptName) + "=======================================");
         Log.i("Facture","=====================================================================================");
 
         List<Product> lst2Pour1 = rabais2Pour1.getProduitsRabais();
@@ -168,7 +169,22 @@ public class TransactionService {
             {
                 Log.i("Facture", "| " + StringUtils.leftPad(transItem.getProduct().getProductName(), 10));
                 StringBuilder product = new StringBuilder(transItem.getQty() + " @ " + "$" + df.format(transItem.getProduct().getPrice()) + " ch.");
-                StringBuilder total = new StringBuilder(df.format(transItem.getQty() * transItem.getProduct().getPrice()));
+
+                double vraitotalproduit = transItem.getQty() * transItem.getProduct().getPrice();
+
+                for(Product p : rabais2Pour1.getProduitsRabais())
+                {
+                    if(p.getBarCode().equals(transItem.getProduct().getBarCode()))
+                    {
+                        int nbrOfCouples = transItem.getQty() / 2;
+
+                        double reduction = nbrOfCouples * transItem.getProduct().getPrice();
+
+                        vraitotalproduit = (vraitotalproduit - reduction);
+                    }
+                }
+
+                StringBuilder total = new StringBuilder(df.format(vraitotalproduit) + "$");
 
                 line.replace(0, product.length() - 1, product.toString());
                 line.replace(line.length() - total.length(), line.length() - 1, total.toString());
@@ -188,11 +204,11 @@ public class TransactionService {
             {
                 if(p.getBarCode().equals(transItem.getProduct().getBarCode()))
                 {
-                    Log.i("Facture", "| " + "Produit en 2 pour 1");
+                    Log.i("Facture", "| " + context.getString(R.string.receipt_2For1));
                 }
             }
 
-            if(transItem.getProduct().getDesc().contains("Produit gratuit"))
+            if(transItem.getProduct().getDesc().contains(context.getString(R.string.receipt_freeProd)))
             {
                 Log.i("Facture", "| " + transItem.getProduct().getDesc());
             }
@@ -217,14 +233,14 @@ public class TransactionService {
         {
             Double tps = 5.00;
             Double tvq = 9.975;
-            Double montantTps = total * (tps/100);
-            Double montantTvq = total * (tvq/100);
+            montanttps = total * (tps/100);
+            montanttvq = total * (tvq/100);
         }
 
-        Log.i("Facture","Total sans taxes :" + df.format(total));
-        Log.i("Facture","TPS :" + Double.toString(montanttps));
-        Log.i("Facture","TVQ :" + Double.toString(montanttvq));
-        Log.i("Facture","Total : " + df.format(totalAvecTaxes));
+        Log.i("Facture", context.getString(R.string.receipt_totalWithoutTaxes) + " " + df.format(total) + "$");
+        Log.i("Facture","TPS: " + df.format(montanttps) + "$");
+        Log.i("Facture","TVQ: " + df.format(montanttvq) + "$");
+        Log.i("Facture","Total: " + df.format(totalAvecTaxes) + "$");
 
         Log.i("Facture","=====================================================================================");
         Log.i("Facture","=====================================================================================");
@@ -238,11 +254,12 @@ public class TransactionService {
     public Double addTaxToAmount(Double montantTotal){
         //http://www.calculconversion.com/calcul-taxes-tps-tvq.html
         Double montantSeuilSansTaxes = repoSansTaxes.getIt();
+
         double rounded = 0.00;
-        if(montantTotal >= montantSeuilSansTaxes) {
+        if(montantSeuilSansTaxes != null && montantTotal >= montantSeuilSansTaxes) {
             return montantTotal;
         }
-        else if(montantTotal < montantSeuilSansTaxes){
+        else if(montantSeuilSansTaxes == null || montantTotal < montantSeuilSansTaxes){
             Double montantAvecTaxe = 0.00;
             Double tps = 5.00;
             Double tvq = 9.975;
@@ -296,14 +313,16 @@ public class TransactionService {
     {
         List<TransactionItem> newList = new ArrayList<TransactionItem>();
 
+        DecimalFormat df = new DecimalFormat("#0.00");
+
         for(ProduitGratuit pg : rabaisProduitGratuit.getProduitsGratuits())
         {
             int nbrOfFreeItems = (int)(Math.floor(totalPresent / pg.getSeuil()));
 
             Product prodToAdd = new Product(pg.getProd());
             prodToAdd.setPrice(0.00);
-            prodToAdd.setDesc("Produit gratuit par tranche de " + Double.toString(pg.getSeuil()));
-            prodToAdd.setProductName(prodToAdd.getProductName() + " (Gratuit)");
+            prodToAdd.setDesc(context.getString(R.string.receipt_freeProd) + " " + df.format(pg.getSeuil()) + "$");
+            prodToAdd.setProductName(prodToAdd.getProductName() + " " + context.getString(R.string.receipt_free));
             TransactionItem ti = new TransactionItem(nbrOfFreeItems, prodToAdd);
 
             newList.add(ti);
