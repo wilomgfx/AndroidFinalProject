@@ -264,7 +264,7 @@ public class TransactionService {
         Double montantSeuilSansTaxes = repoSansTaxes.getIt();
         double rounded = 0.00;
         //si le seuil est set a 0.00 manuellement ou qu'il n'y en pas.
-        if(montantSeuilSansTaxes == 0.00 || montantSeuilSansTaxes == null) {
+        if(montantSeuilSansTaxes == null || montantSeuilSansTaxes == 0.00) {
             Double montantAvecTaxe = 0.00;
             Double tps = 5.00;
             Double tvq = 9.975;
