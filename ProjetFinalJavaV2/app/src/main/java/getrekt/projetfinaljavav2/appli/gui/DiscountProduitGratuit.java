@@ -38,7 +38,7 @@ public class DiscountProduitGratuit extends DialogFragment {
         final View v = inflater.inflate(R.layout.discount_produitgratuit, container, false);
 
         // Sets title area
-        getDialog().setTitle(getString(R.string.rabais2pour1));
+        getDialog().setTitle(getString(R.string.rabaisProduitGratuit));
 
         prodService = new ProductService(context);
         transService = new TransactionService(context);
