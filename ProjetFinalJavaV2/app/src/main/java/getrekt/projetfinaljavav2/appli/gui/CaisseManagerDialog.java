@@ -28,7 +28,7 @@ public class CaisseManagerDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.caissemanager_dialog, container, false);
 
         // Sets title area
-        getActivity().setTitle(getString(R.string.caisse_manager));
+        getDialog().setTitle(getString(R.string.caisse_manager));
 
         final TextView txtViewEtat = (TextView)v.findViewById(R.id.textView2);
 
