@@ -76,6 +76,8 @@
     <string name="tax_freeIsnow">The tax free amout is now  : </string>
     <string name="need_something_to_pay">You need to have items before you can pay.</string>
     <string name="no_change_to_give">No change to give</string>
+    <string name="action_manageCaisse">Manage the register</string>
+    <string name="caisse_manager">State of the register</string>
 
     <!--Facture-->
     <string name="receipt_receiptName">RECEIPT</string>

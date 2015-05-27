@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 import getrekt.projetfinaljavav2.R;
+import getrekt.projetfinaljavav2.appli.gui.CaisseManagerDialog;
 import getrekt.projetfinaljavav2.appli.gui.CustomDialog;
 import getrekt.projetfinaljavav2.appli.gui.DialogResult;
 import getrekt.projetfinaljavav2.appli.gui.DiscountDialog;
@@ -65,6 +66,7 @@ public class ProjetFinalMain extends ActionBarActivity {
         Button boutonScanner = (Button) findViewById(R.id.btn_scanner);
         Button boutonAddProduit = (Button) findViewById(R.id.btn_addProduct);
         Button boutonPayer = (Button) findViewById(R.id.btn_pay);
+        final TextView txtTotal = (TextView)findViewById(R.id.txt_total);
 
         boutonScanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +97,10 @@ public class ProjetFinalMain extends ActionBarActivity {
 //                        serviceTransacs.printReceipt(newTrans.getTransItems());
                         //serviceTransacs.save(newTrans);
                         PaiementDialog pDialog = new PaiementDialog();
-                        pDialog.setTotal(calculerTotal());
+                        Double totals = calculerTotalRawDouble();
+                        Double vraiTotal =  serviceTransacs.Appliquer2Pour1(m_currentProducts,totals);
+
+                        pDialog.setTotal(vraiTotal.toString());
                         pDialog.currentProducts = m_currentProducts;
                         //TODO Changer en I18N
                         pDialog.show(getFragmentManager(), "Paiement d");
@@ -343,6 +348,11 @@ public class ProjetFinalMain extends ActionBarActivity {
         }
         if (id == R.id.action_manageDiscounts) {
             ShowDiscountDialog();
+            return true;
+        }
+        if (id == R.id.action_manageCaisse) {
+            CaisseManagerDialog dialog = new CaisseManagerDialog();
+            dialog.show(getFragmentManager(),"State of register");
             return true;
         }
 

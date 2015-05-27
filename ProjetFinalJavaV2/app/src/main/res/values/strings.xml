@@ -77,6 +77,7 @@
     <string name="tax_freeIsnow">Le montant sans taxes est maintenant : </string>
     <string name="need_something_to_pay">Vous devez avoir des items avant de pouvoir payer.</string>
     <string name="no_change_to_give">Aucun change à redonner</string>
+    <string name="action_manageCaisse">Gérer la caisse</string>
 
     <!--Facture-->
     <string name="receipt_receiptName">FACTURE</string>
@@ -84,5 +85,6 @@
     <string name="receipt_freeProd">Produit gratuit par trache de </string>
     <string name="receipt_totalWithoutTaxes">Total sans taxes: </string>
     <string name="receipt_free">(Gratuit)</string>
+    <string name="caisse_manager">État de la caisse</string>
 
 </resources>

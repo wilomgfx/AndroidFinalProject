@@ -14,4 +14,6 @@
 
     <item android:id="@+id/action_manageDiscounts" android:title="@string/action_manageDiscounts"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_manageCaisse" android:title="@string/action_manageCaisse"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

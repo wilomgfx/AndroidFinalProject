@@ -31,6 +31,7 @@ public class MonnayeurResultDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.monnayeur_result_dialog, container, false);
+
         if(total.equals("0.0")) {
             TextView textResultMonnayeur = (TextView) v.findViewById(R.id.txtChangeResult);
             TextView textTotal = (TextView) v.findViewById(R.id.txt_total);

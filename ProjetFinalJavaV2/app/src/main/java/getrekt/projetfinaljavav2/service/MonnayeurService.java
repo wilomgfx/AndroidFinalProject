@@ -1,8 +1,10 @@
 package getrekt.projetfinaljavav2.service;
 
 import android.content.Context;
+import android.util.Log;
 
 import getrekt.projetfinaljavav2.models.NotEnoughtMoneyToPay;
+import getrekt.projetfinaljavav2.models.repo.RepoCaisse;
 import getrekt.projetfinaljavav2.monnayeur.CashException;
 import getrekt.projetfinaljavav2.monnayeur.CashRegister;
 import getrekt.projetfinaljavav2.monnayeur.Change;
@@ -22,15 +24,28 @@ public class MonnayeurService {
 
     CashRegister cashReg;
 
+    RepoCaisse repoCaisse;
 
 
     public MonnayeurService(Context pContext)
     {
+        repoCaisse = RepoCaisse.get(pContext);
         context = pContext;
 
         regMachine = new LajoieCorriveauMachine();
 
-        cashReg = new LajoieCorriveauReg();
+        //cashReg = new LajoieCorriveauReg();
+        //le premier donc le seul techniquement.
+        Integer sizess = repoCaisse.getAll().size();
+        Log.i("Cashregsize",sizess.toString());
+        if(repoCaisse.getAll().size() ==0) {
+            LajoieCorriveauReg regPleine = new LajoieCorriveauReg();
+            repoCaisse.save(regPleine);
+            cashReg = repoCaisse.getAll().get(0);
+        }
+        else{
+            cashReg = repoCaisse.getAll().get(repoCaisse.getAll().size()-1);
+        }
 
     }
 
@@ -49,12 +64,19 @@ public class MonnayeurService {
         }
 
         Change result = regMachine.computeChange(/*(float) float ?*/ amountGiven, cashReg);
+        
+        //sauvegarde la caisse
+        repoCaisse.save((LajoieCorriveauReg)cashReg);
 
         //pretty printing the change
         return  result;
 
 
     }
+    public CashRegister getRegister(){
+        return cashReg;
+    }
+
 
     /***
      *  Pretty prints the change to the screen in a good looking string format
@@ -65,6 +87,14 @@ public class MonnayeurService {
     public String PrettyPrintChange(Change change) throws CashException {
         //pretty printing the change
         return  StringUtilsMonnayeur.toString(change);
+    }
+    /***
+     *  Pretty prints the change to the screen in a good looking string format
+     * @param register register to pretty print
+     * @return a pretty printed register to show to the client
+    */
+    public  String prettyPrintReg(CashRegister register){
+        return  StringUtilsMonnayeur.toString(register);
     }
 
 
