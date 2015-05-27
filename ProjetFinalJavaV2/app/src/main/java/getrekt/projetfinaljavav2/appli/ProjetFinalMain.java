@@ -91,11 +91,12 @@ public class ProjetFinalMain extends ActionBarActivity {
                     String totalSofar = calculerTotal();
                     if(!totalSofar.equals(".00")) {
                         // Toast.makeText(getApplicationContext(), getString(R.string.transactionSave), Toast.LENGTH_SHORT).show();
-                        Transaction newTrans = new Transaction(m_currentProducts, new Date());
-                        serviceTransacs.printReceipt(newTrans.getTransItems());
+//                        Transaction newTrans = new Transaction(m_currentProducts, new Date());
+//                        serviceTransacs.printReceipt(newTrans.getTransItems());
                         //serviceTransacs.save(newTrans);
                         PaiementDialog pDialog = new PaiementDialog();
                         pDialog.setTotal(calculerTotal());
+                        pDialog.currentProducts = m_currentProducts;
                         //TODO Changer en I18N
                         pDialog.show(getFragmentManager(), "Paiement d");
                         //serviceTransacs.printReceipt(m_currentProducts);
