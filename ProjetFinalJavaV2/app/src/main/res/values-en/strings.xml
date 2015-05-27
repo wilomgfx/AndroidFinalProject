@@ -89,5 +89,5 @@
     <string name="invalid_product_info">Invalid product, verify that the data entered in the fields are not empty and that they are valid.</string>
     <string name="invalid_product_info_barcodeNot13Digits">The barcode muste be of 13 digits</string>
     <string name="not_enought_money">Not enought money added....  amount needed : </string>
-    <string name="amount_given">amount given : </string>
+    <string name="amount_given"> amount given : </string>
 </resources>
