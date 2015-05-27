@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import getrekt.projetfinaljavav2.R;
+import getrekt.projetfinaljavav2.models.InvalidDataException;
 import getrekt.projetfinaljavav2.models.Product;
 import getrekt.projetfinaljavav2.models.ProduitGratuit;
 import getrekt.projetfinaljavav2.models.RabaisProduitGratuit;
@@ -60,34 +61,48 @@ public class DiscountProduitGratuit extends DialogFragment {
         final EditText codeBarreRabais = (EditText)v.findViewById(R.id.rabaisProduitGratuit_inputBarCode);
         final EditText pSeuil = (EditText)v.findViewById(R.id.rabaisProduitGratuit_Seuil);
 
+
+
         btn_AddRabais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Product prod = prodService.getByCodeBarre(codeBarreRabais.getText().toString());
-                double seuil = Double.parseDouble(pSeuil.getText().toString());
 
-                if(prod == null)
-                    Toast.makeText(context, getString(R.string.productNotFound), Toast.LENGTH_SHORT).show();
-                else
-                {
-                    boolean contained = false;
+                //validation
+                try {
+                    prodService.canAddFreeProduct(codeBarreRabais.getText().toString(), pSeuil.getText().toString());
+                    Product prod = prodService.getByCodeBarre(codeBarreRabais.getText().toString());
+                    double seuil = Double.parseDouble(pSeuil.getText().toString());
 
-                    for(ProduitGratuit item : m_currentProducts)
-                    {
-                        if(item.getProd().getBarCode().equals(prod.getBarCode()))
-                            contained = true;
-                    }
-
-                    if(!contained)
-                    {
-                        ProduitGratuit newProdGrat = new ProduitGratuit(prod, seuil);
-                        m_currentProducts.add(newProdGrat);
-                    }
+                    if(prod == null)
+                        Toast.makeText(context, getString(R.string.productNotFound), Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(context, getString(R.string.rabaisProduitGratuit_alreadyThere), Toast.LENGTH_SHORT).show();
+                    {
+                        boolean contained = false;
 
-                    adapter.notifyDataSetChanged();
+                        for(ProduitGratuit item : m_currentProducts)
+                        {
+                            if(item.getProd().getBarCode().equals(prod.getBarCode()))
+                                contained = true;
+                        }
+
+                        if(!contained)
+                        {
+
+                            ProduitGratuit newProdGrat = new ProduitGratuit(prod, seuil);
+                            m_currentProducts.add(newProdGrat);
+
+                        }
+                        else
+                            Toast.makeText(context, getString(R.string.rabaisProduitGratuit_alreadyThere), Toast.LENGTH_SHORT).show();
+
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+                catch (InvalidDataException e){
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

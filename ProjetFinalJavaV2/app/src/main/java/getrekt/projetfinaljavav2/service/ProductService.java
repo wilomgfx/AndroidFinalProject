@@ -173,18 +173,28 @@ public class ProductService {
     }
 
     public Double canAddProduct(String name,String desc,String prix,String barcode) throws InvalidDataException{
+        if(barcode.length() < 13){
+            throw  new InvalidDataException(context.getString(R.string.invalid_product_info_barcodeNot13Digits));
+        }
         if(!name.isEmpty() && !desc.isEmpty() && !prix.isEmpty() && !barcode.isEmpty()){
             //pour rendre le en .00
             Double prixD = Double.parseDouble(prix);
             prixD = (double)Math.round(prixD *100)/100;
             return prixD;
         }
-        else if(barcode.length() < 13){
-            throw  new InvalidDataException(context.getString(R.string.invalid_product_info_barcodeNot13Digits));
-        }
         else {
             throw  new InvalidDataException(context.getString(R.string.invalid_product_info));
         }
+    }
+
+    public void canAddFreeProduct(String barcode,String amount)throws InvalidDataException{
+        if(barcode.isEmpty() && amount.isEmpty()){
+            throw  new InvalidDataException(context.getString(R.string.invalid_product_info));
+        }
+        else if(barcode.length() < 13){
+            throw  new InvalidDataException(context.getString(R.string.invalid_product_info_barcodeNot13Digits));
+        }
+
     }
 }
 
