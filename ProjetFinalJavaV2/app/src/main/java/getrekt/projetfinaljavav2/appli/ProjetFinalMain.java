@@ -99,6 +99,7 @@ public class ProjetFinalMain extends ActionBarActivity {
                         PaiementDialog pDialog = new PaiementDialog();
                         Double totals = calculerTotalRawDouble();
                         Double vraiTotal =  serviceTransacs.Appliquer2Pour1(m_currentProducts,totals);
+                        vraiTotal = (double)Math.round(vraiTotal *100)/100;
 
                         pDialog.setTotal(vraiTotal.toString());
                         pDialog.currentProducts = m_currentProducts;
