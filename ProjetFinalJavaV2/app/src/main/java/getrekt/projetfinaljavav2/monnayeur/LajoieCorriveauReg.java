@@ -5,6 +5,16 @@ import java.util.Map;
 
 public class LajoieCorriveauReg implements getrekt.projetfinaljavav2.monnayeur.CashRegister {
 
+    private Long id;
+
+    public Long getID() {
+        return id;
+    }
+
+    public void setID(Long id) {
+        this.id = id;
+    }
+
 	private Map<Money, Integer> register = new HashMap<Money, Integer>();
 	private Map<Money, Integer> maxQty = new HashMap<Money, Integer>();
 	
