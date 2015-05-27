@@ -131,14 +131,16 @@ public class TestTransactionService extends AndroidTestCase {
         totalPresent += item2.getQty() * item2.getProduct().getPrice();
         supposedPrice += 3 * item2.getProduct().getPrice();
 
-        transacService.AppliquerProduitGratuit(lstTrans, totalPresent);
+        List<TransactionItem> newlist = transacService.AppliquerProduitGratuit(lstTrans, totalPresent);
 
-        int nbrOfItems = 0;
+        int nbrOfItems = 3;
 
-        for(TransactionItem item : lstTrans)
+        for(TransactionItem item : newlist)
         {
+            lstTrans.add(item);
             nbrOfItems += item.getQty();
         }
+
         assertEquals(nbrOfItems, 6);
     }
 }
