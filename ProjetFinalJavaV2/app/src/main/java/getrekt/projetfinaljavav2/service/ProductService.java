@@ -113,11 +113,11 @@ public class ProductService {
     }
 
     public void generateProducts() {
-        Product p1 = new Product("Céréales Cherios", "Des céréales au miel", 19.99, "7011043018498",false);
+        Product p1 = new Product("Céréales Cherios", "Des céréales au miel", 19.99, "7011043018498",true);
         Product p2 = new Product("Pomme", "Fruit", 0.99, "6797413659379",true);
         Product p3 = new Product("Yogourt", "Grec", 0.49, "7651921095861",true);
         Product p4 = new Product("Muffins", "Au raisin.", 1.15, "5729286863776",true);
-        Product p5 = new Product("Lait 2%", "2 Litres.", 2.99, "6075631136316",true);
+        Product p5 = new Product("Lait 2%", "2 Litres.", 2.99, "6075631136316",false);
         Product p6 = new Product("Éclairs au chocolat", "Patisserie", 3.49, "6116088359160",true);
         Product p7 = new Product("Biscuits Oreo", "Original", 2.49, "3298482123547",true);
         Product p8 = new Product("Tarte aux pommes", "Tarte", 6.99, "1629924473432",true);
