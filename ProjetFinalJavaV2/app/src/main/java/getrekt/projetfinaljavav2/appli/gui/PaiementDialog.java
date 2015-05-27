@@ -127,11 +127,14 @@ public class PaiementDialog extends DialogFragment
                     //on passe le total et le montant que le client veut payer pour verifier si c'est asser d'argent.
                     changeResult =  moneyService.PayerAvecLaCaisse(valeurTotalPayment/100.00,Double.parseDouble(total));
                     Log.i("DebuggingPaiementDialog", moneyService.PrettyPrintChange(changeResult));
+                    //result du monnayeur
                     MonnayeurResultDialog monnayeurDialog = new MonnayeurResultDialog();
                     monnayeurDialog.setMonnayeurPrint(moneyService.PrettyPrintChange(changeResult));
-                    monnayeurDialog.setTotal(total);
+                    Double valeurDuChange = changeResult.totalValue();
+                    monnayeurDialog.setTotal(valeurDuChange.toString());
                     //TODO CHANGE TO I18N
                     monnayeurDialog.show(getFragmentManager(),"Change to handle");
+                    //print the transaction
                     Transaction newTrans = new Transaction(currentProducts, new Date());
                     transacService.printReceipt(newTrans.getTransItems());
                     transacService.save(newTrans);

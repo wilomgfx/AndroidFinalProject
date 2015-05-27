@@ -76,6 +76,7 @@
     <string name="tax_freeAmount">Seuil Sans taxes</string>
     <string name="tax_freeIsnow">Le montant sans taxes est maintenant : </string>
     <string name="need_something_to_pay">Vous devez avoir des items avant de pouvoir payer.</string>
+    <string name="no_change_to_give">Aucun change à redonner</string>
 
     <!--Facture-->
     <string name="receipt_receiptName">FACTURE</string>

@@ -31,11 +31,18 @@ public class MonnayeurResultDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.monnayeur_result_dialog, container, false);
-
-        TextView textResultMonnayeur = (TextView)v.findViewById(R.id.txtChangeResult);
-        TextView textTotal = (TextView)v.findViewById(R.id.txt_total);
-        textResultMonnayeur.setText(monnayeurPrint);
-        textTotal.setText(total);
+        if(total.equals("0.0")) {
+            TextView textResultMonnayeur = (TextView) v.findViewById(R.id.txtChangeResult);
+            TextView textTotal = (TextView) v.findViewById(R.id.txt_total);
+            textResultMonnayeur.setText(getString(R.string.no_change_to_give));
+            //textTotal.setText(total);
+        }
+        else{
+            TextView textResultMonnayeur = (TextView) v.findViewById(R.id.txtChangeResult);
+            TextView textTotal = (TextView) v.findViewById(R.id.txt_total);
+            textResultMonnayeur.setText(monnayeurPrint);
+            textTotal.setText(total);
+        }
 
         return  v;
     }

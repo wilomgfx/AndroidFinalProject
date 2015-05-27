@@ -75,6 +75,7 @@
     <string name="tax_freeAmount">Tax Free Amount</string>
     <string name="tax_freeIsnow">The tax free amout is now  : </string>
     <string name="need_something_to_pay">You need to have items before you can pay.</string>
+    <string name="no_change_to_give">No change to give</string>
 
     <!--Facture-->
     <string name="receipt_receiptName">RECEIPT</string>

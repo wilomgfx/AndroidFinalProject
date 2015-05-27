@@ -26,4 +26,5 @@
         android:id="@+id/txt_total"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.58" />
+
 </LinearLayout>
