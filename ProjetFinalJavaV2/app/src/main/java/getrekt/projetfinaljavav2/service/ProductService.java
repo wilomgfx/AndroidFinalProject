@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
+import getrekt.projetfinaljavav2.R;
+import getrekt.projetfinaljavav2.models.InvalidDataException;
 import getrekt.projetfinaljavav2.models.Product;
 import getrekt.projetfinaljavav2.models.Rabais2Pour1;
 import getrekt.projetfinaljavav2.models.RabaisProduitGratuit;
@@ -168,6 +170,21 @@ public class ProductService {
     {
         repoProduitGratuit.deleteAll();
         return repoProduitGratuit.save(pRab);
+    }
+
+    public Double canAddProduct(String name,String desc,String prix,String barcode) throws InvalidDataException{
+        if(!name.isEmpty() && !desc.isEmpty() && !prix.isEmpty() && !barcode.isEmpty()){
+            //pour rendre le en .00
+            Double prixD = Double.parseDouble(prix);
+            prixD = (double)Math.round(prixD *100)/100;
+            return prixD;
+        }
+        else if(barcode.length() < 13){
+            throw  new InvalidDataException(context.getString(R.string.invalid_product_info_barcodeNot13Digits));
+        }
+        else {
+            throw  new InvalidDataException(context.getString(R.string.invalid_product_info));
+        }
     }
 }
 

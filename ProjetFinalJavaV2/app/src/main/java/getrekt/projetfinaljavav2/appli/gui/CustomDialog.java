@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import getrekt.projetfinaljavav2.R;
+import getrekt.projetfinaljavav2.models.InvalidDataException;
+import getrekt.projetfinaljavav2.service.ProductService;
 
 /**
  * Created by Joel on 4/15/2015.
@@ -18,12 +21,14 @@ public class CustomDialog extends DialogFragment {
     DialogResult mDialogResult; // the callback
     public String m_preAssignedBarCode;
 
+    ProductService productService;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.product_add_dialog, container, false);
-
+        productService = new ProductService(getActivity().getApplicationContext());
         // Sets title area
         getDialog().setTitle(getString(R.string.addProd_title));
 
@@ -48,12 +53,16 @@ public class CustomDialog extends DialogFragment {
             public void onClick(View v) {
                 if(mDialogResult != null)
                 {
-                    // Sending data
-                    mDialogResult.finish(txtProductName.getText().toString(),
-                            txtDesc.getText().toString(),
-                            Double.parseDouble(txtPrice.getText().toString()),
-                            txtBarcode.getText().toString());
-                    dismiss();
+                    Double prixAdeuxD;
+                    try {
+                        prixAdeuxD =  productService.canAddProduct(txtProductName.getText().toString(), txtDesc.getText().toString(), txtPrice.getText().toString(), txtBarcode.getText().toString());
+                        // Sending data
+                        mDialogResult.finish(txtProductName.getText().toString(), txtDesc.getText().toString(), prixAdeuxD, txtBarcode.getText().toString());
+                        dismiss();
+                    } catch (InvalidDataException e) {
+                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
                 }
             }
         });

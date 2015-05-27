@@ -87,5 +87,7 @@
     <string name="receipt_totalWithoutTaxes">Total sans taxes: </string>
     <string name="receipt_free">(Gratuit)</string>
     <string name="caisse_manager">État de la caisse</string>
+    <string name="invalid_product_info">Produit invalide, vérifier que les champs ne sont pas vide et que les données soit exactes.</string>
+    <string name="invalid_product_info_barcodeNot13Digits">Le code bare doit être de 13 chiffres</string>
 
 </resources>
