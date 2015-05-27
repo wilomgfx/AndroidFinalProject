@@ -196,7 +196,7 @@ public class TransactionService {
                 String total = df.format(transItem.getProduct().getPrice());
 
                 line.replace(0, product.length() - 1, product.toString());
-                line.replace(line.length() - total.length(), line.length() - 1, total.toString());
+                line.replace(line.length() - total.length(), line.length() - 1, total.toString() + "$");
             }
 
             Log.i("Facture","|   " + line.toString());
