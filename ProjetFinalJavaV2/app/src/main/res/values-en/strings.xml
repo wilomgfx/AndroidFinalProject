@@ -43,6 +43,7 @@
     <string name="addProd_prodBarCode">Bar Code:</string>
     <string name="addProd_btnAdd">Add</string>
     <string name="addProd_btnCancel">Cancel</string>
+    <string name="addProd_title">Add a product</string>
 
     <!--List-->
     <string name="listItem_prodName">Product</string>

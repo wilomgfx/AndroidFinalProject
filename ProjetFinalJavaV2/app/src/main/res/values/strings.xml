@@ -44,6 +44,7 @@
     <string name="addProd_prodBarCode">Code Barre:</string>
     <string name="addProd_btnAdd">Ajouter</string>
     <string name="addProd_btnCancel">Annuler</string>
+    <string name="addProd_title">Ajouter un produit</string>
 
     <!--List-->
     <string name="listItem_prodName">Produit</string>

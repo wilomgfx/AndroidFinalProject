@@ -25,7 +25,7 @@ public class CustomDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.product_add_dialog, container, false);
 
         // Sets title area
-        getDialog().setTitle("Ajouter un produit");
+        getDialog().setTitle(getString(R.string.addProd_title));
 
         // Identifying data to send back
         final EditText txtProductName = (EditText) v.findViewById(R.id.txt_productName);
