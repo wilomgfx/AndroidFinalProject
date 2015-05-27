@@ -60,11 +60,12 @@ public class MonnayeurService {
             newAmount = (double)Math.round(newAmount *100)/100;
 
             Change result = regMachine.computeChange(/*(float) float ?*/ newAmount, cashReg);
+            repoCaisse.save((LajoieCorriveauReg)cashReg);
             return  result;
         }
 
         Change result = regMachine.computeChange(/*(float) float ?*/ amountGiven, cashReg);
-        
+
         //sauvegarde la caisse
         repoCaisse.save((LajoieCorriveauReg)cashReg);
 
