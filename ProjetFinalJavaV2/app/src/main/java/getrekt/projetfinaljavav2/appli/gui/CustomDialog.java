@@ -56,8 +56,8 @@ public class CustomDialog extends DialogFragment {
                     Double prixAdeuxD;
                     try {
                         prixAdeuxD =  productService.canAddProduct(txtProductName.getText().toString(), txtDesc.getText().toString(), txtPrice.getText().toString(), txtBarcode.getText().toString());
-                        // Sending data
-                        mDialogResult.finish(txtProductName.getText().toString(), txtDesc.getText().toString(), prixAdeuxD, txtBarcode.getText().toString());
+                        // Sending data, estTaxable hardCoder pour le bien de la cause
+                        mDialogResult.finish(txtProductName.getText().toString(), txtDesc.getText().toString(), prixAdeuxD, txtBarcode.getText().toString(),true);
                         dismiss();
                     } catch (InvalidDataException e) {
                         Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

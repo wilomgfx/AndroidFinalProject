@@ -34,17 +34,17 @@ public class TestStockageFichiers extends AndroidTestCase
     }
 
     public void testSaveAndGetAll(){
-        Product p = new Product("Produit ", "", 10.00, "1234434");
+        Product p = new Product("Produit ", "", 10.00, "1234434",true);
         repoProd.save(p);
         assertEquals(repoProd.getAll().size(), 1);
     }
 
     public void testMultipleSaveAndGetAll()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         repoProd.saveMany(p,p2,p3,p4);
 
@@ -53,10 +53,10 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testMultipleSaveAndGetAll2()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         List<Product> prodlist = new ArrayList<Product>();
 
@@ -72,7 +72,7 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testGetByID()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
 
         Long idDuProd = repoProd.save(p);
 
@@ -83,7 +83,7 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testDeleteOne()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
 
         Long idDuProd = repoProd.save(p);
 
@@ -94,7 +94,7 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testDeleteOne2()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
 
         Long idDuProd = repoProd.save(p);
 
@@ -105,10 +105,10 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testDeleteALL()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         repoProd.saveMany(p,p2,p3,p4);
 
@@ -119,7 +119,7 @@ public class TestStockageFichiers extends AndroidTestCase
 
     public void testGetByCodeBarre()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
         String barCode = "1234435";
 
         repoProd.save(p);

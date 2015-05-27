@@ -113,26 +113,26 @@ public class ProductService {
     }
 
     public void generateProducts() {
-        Product p1 = new Product("Céréales Cherios", "Des céréales au miel", 19.99, "7011043018498");
-        Product p2 = new Product("Pomme", "Fruit", 0.99, "6797413659379");
-        Product p3 = new Product("Yogourt", "Grec", 0.49, "7651921095861");
-        Product p4 = new Product("Muffins", "Au raisin.", 1.15, "5729286863776");
-        Product p5 = new Product("Lait 2%", "2 Litres.", 2.99, "6075631136316");
-        Product p6 = new Product("Éclairs au chocolat", "Patisserie", 3.49, "6116088359160");
-        Product p7 = new Product("Biscuits Oreo", "Original", 2.49, "3298482123547");
-        Product p8 = new Product("Tarte aux pommes", "Tarte", 6.99, "1629924473432");
-        Product p9 = new Product("Carottes", "2 lb", 2.39, "5648382418072");
-        Product p10 = new Product("Soupe aux tomates", "Chunkee", 5.10, "5942916222891");
-        Product p11 = new Product("Nouilles Alphabits", "Soupe", 4.49, "8038722591249");
-        Product p12 = new Product("Shnitzels", "Plat Allemand", 6.59, "1589477250587");
-        Product p13 = new Product("Casseau de fraises", "Fruits", 7.19, "7611473873003");
-        Product p14 = new Product("Casseau de bleuets", "Fruits", 7.19, "5088408786417");
-        Product p15 = new Product("Ketchup", "Condiment", 3.99, "3481608318716");
-        Product p16 = new Product("Cornichons", "3lb", 4.99, "4407073486209");
-        Product p17 = new Product("Viande froide", "5lb", 6.19, "3593013272573");
-        Product p18 = new Product("Laitue", "Legume", 2.89, "4233891349934");
-        Product p19 = new Product("Biscuits Ritz", "Croustilles", 7.89, "2657604046187");
-        Product p20 = new Product("Sardines", "5lb", 8.99, "7224672377618");
+        Product p1 = new Product("Céréales Cherios", "Des céréales au miel", 19.99, "7011043018498",false);
+        Product p2 = new Product("Pomme", "Fruit", 0.99, "6797413659379",true);
+        Product p3 = new Product("Yogourt", "Grec", 0.49, "7651921095861",true);
+        Product p4 = new Product("Muffins", "Au raisin.", 1.15, "5729286863776",true);
+        Product p5 = new Product("Lait 2%", "2 Litres.", 2.99, "6075631136316",true);
+        Product p6 = new Product("Éclairs au chocolat", "Patisserie", 3.49, "6116088359160",true);
+        Product p7 = new Product("Biscuits Oreo", "Original", 2.49, "3298482123547",true);
+        Product p8 = new Product("Tarte aux pommes", "Tarte", 6.99, "1629924473432",true);
+        Product p9 = new Product("Carottes", "2 lb", 2.39, "5648382418072",true);
+        Product p10 = new Product("Soupe aux tomates", "Chunkee", 5.10, "5942916222891",true);
+        Product p11 = new Product("Nouilles Alphabits", "Soupe", 4.49, "8038722591249",true);
+        Product p12 = new Product("Shnitzels", "Plat Allemand", 6.59, "1589477250587",true);
+        Product p13 = new Product("Casseau de fraises", "Fruits", 7.19, "7611473873003",true);
+        Product p14 = new Product("Casseau de bleuets", "Fruits", 7.19, "5088408786417",true);
+        Product p15 = new Product("Ketchup", "Condiment", 3.99, "3481608318716",true);
+        Product p16 = new Product("Cornichons", "3lb", 4.99, "4407073486209",true);
+        Product p17 = new Product("Viande froide", "5lb", 6.19, "3593013272573",true);
+        Product p18 = new Product("Laitue", "Legume", 2.89, "4233891349934",true);
+        Product p19 = new Product("Biscuits Ritz", "Croustilles", 7.89, "2657604046187",true);
+        Product p20 = new Product("Sardines", "5lb", 8.99, "7224672377618",true);
 
         repoFichiers.saveMany(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20);
     }

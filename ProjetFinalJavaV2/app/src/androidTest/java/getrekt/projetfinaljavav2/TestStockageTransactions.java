@@ -33,7 +33,7 @@ public class TestStockageTransactions extends AndroidTestCase {
     }
 
     public void testSaveAndGetAll(){
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
         TransactionItem t = new TransactionItem(3, p);
 
         List<TransactionItem> items = new ArrayList<TransactionItem>();
@@ -47,10 +47,10 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testMultipleSaveAndGetAll()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         TransactionItem t = new TransactionItem(3, p);
         TransactionItem t1 = new TransactionItem(6, p2);
@@ -80,10 +80,10 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testMultipleSaveAndGetAll2()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         TransactionItem t = new TransactionItem(3, p);
         TransactionItem t1 = new TransactionItem(6, p2);
@@ -119,7 +119,7 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testGetByID()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
         TransactionItem t = new TransactionItem(1, p);
 
         List<TransactionItem> lst = new ArrayList<TransactionItem>();
@@ -138,7 +138,7 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testDeleteOne()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
         TransactionItem t = new TransactionItem(2, p);
 
         List<TransactionItem> lstTrans = new ArrayList<TransactionItem>();
@@ -155,7 +155,7 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testDeleteOne2()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
         TransactionItem t = new TransactionItem(2, p);
 
         List<TransactionItem> lstTrans = new ArrayList<TransactionItem>();
@@ -172,10 +172,10 @@ public class TestStockageTransactions extends AndroidTestCase {
 
     public void testDeleteALL()
     {
-        Product p = new Product("Produit 1", "", 10.00, "1234435");
-        Product p2 = new Product("Produit 2", "", 12.00, "1234436");
-        Product p3 = new Product("Produit 3", "", 13.00, "1234437");
-        Product p4 = new Product("Produit 4", "", 14.00, "1234438");
+        Product p = new Product("Produit 1", "", 10.00, "1234435",true);
+        Product p2 = new Product("Produit 2", "", 12.00, "1234436",true);
+        Product p3 = new Product("Produit 3", "", 13.00, "1234437",true);
+        Product p4 = new Product("Produit 4", "", 14.00, "1234438",true);
 
         TransactionItem t = new TransactionItem(3, p);
         TransactionItem t1 = new TransactionItem(6, p2);

@@ -81,7 +81,7 @@ public class TestTransactionService extends AndroidTestCase {
     {
         productService.getRabais2Pour1().deleteAllRabais();
 
-        Product testProd = new Product("TestProd", "Desc", 20.00, "11111111");
+        Product testProd = new Product("TestProd", "Desc", 20.00, "11111111",true);
 
         productService.getRabais2Pour1().addRabais(testProd);
 
@@ -96,7 +96,7 @@ public class TestTransactionService extends AndroidTestCase {
         totalPresent += item.getQty() * item.getProduct().getPrice();
         supposedPrice += 1 * item.getProduct().getPrice();
 
-        Product testProdNoRabais = new Product("TestProdNoRabais", "Desc", 10.00, "22222222");
+        Product testProdNoRabais = new Product("TestProdNoRabais", "Desc", 10.00, "22222222",true);
 
         TransactionItem item2 = new TransactionItem(3, testProdNoRabais);
 
@@ -114,7 +114,7 @@ public class TestTransactionService extends AndroidTestCase {
     {
         productService.getRabaisProduitGratuit().deleteAllRabais();
 
-        Product testProd = new Product("TestProd", "Desc", 0.00, "11111111");
+        Product testProd = new Product("TestProd", "Desc", 0.00, "11111111",true);
 
         productService.getRabaisProduitGratuit().addProduitGratuit(testProd, 10.00);
 
@@ -122,7 +122,7 @@ public class TestTransactionService extends AndroidTestCase {
         double totalPresent = 0.00;
         double supposedPrice = 0.00;
 
-        Product testProdNoRabais = new Product("TestProdNoRabais", "Desc", 10.00, "22222222");
+        Product testProdNoRabais = new Product("TestProdNoRabais", "Desc", 10.00, "22222222",true);
 
         TransactionItem item2 = new TransactionItem(3, testProdNoRabais);
 
@@ -142,5 +142,104 @@ public class TestTransactionService extends AndroidTestCase {
         }
 
         assertEquals(nbrOfItems, 6);
+    }
+    public void testTaxesSelonDifferentProduitsPasDeTaxes(){
+        Product testProdNoTaxes = new Product("TestProdNoTaxes", "Desc", 10.00, "22222223",false);
+        //Product testProdTaxes = new Product("TestProdTaxes", "Desc", 10.00, "22222222",true);
+
+        double total = 0.00;
+        double totalProduitSansTaxes = 0.00;
+
+        List<TransactionItem> lstItems = new ArrayList<>();
+        TransactionItem itemNoTaxes = new TransactionItem(1,testProdNoTaxes);
+        //TransactionItem itemTaxes = new TransactionItem(1,testProdTaxes);
+
+        lstItems.add(itemNoTaxes);
+       // lstItems.add(itemTaxes);
+
+
+        for(TransactionItem transItem : lstItems)
+        {
+            //check si le produit est taxable
+            if(transItem.getProduct().getEstTaxable()){
+                total += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+            else{
+                totalProduitSansTaxes += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+        }
+
+        totalProduitSansTaxes = total+totalProduitSansTaxes;
+        total = transacService.Appliquer2Pour1(lstItems, total);
+        double totalAvecTaxes = transacService.addTaxToAmount(total);
+
+        //devrait etre 0.0 parce que le produit n'est pas taxable
+        assertEquals(0.0,totalAvecTaxes);
+    }
+    public void testTaxesSelonDifferentProduitsAvecTaxes(){
+       // Product testProdNoTaxes = new Product("TestProdNoTaxes", "Desc", 10.00, "22222223",false);
+        Product testProdTaxes = new Product("TestProdTaxes", "Desc", 10.00, "22222222",true);
+
+        double total = 0.00;
+        double totalProduitSansTaxes = 0.00;
+
+        List<TransactionItem> lstItems = new ArrayList<>();
+        //TransactionItem itemNoTaxes = new TransactionItem(1,testProdNoTaxes);
+        TransactionItem itemTaxes = new TransactionItem(1,testProdTaxes);
+
+        //lstItems.add(itemNoTaxes);
+        lstItems.add(itemTaxes);
+
+
+        for(TransactionItem transItem : lstItems)
+        {
+            //check si le produit est taxable
+            if(transItem.getProduct().getEstTaxable()){
+                total += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+            else{
+                totalProduitSansTaxes += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+        }
+
+        totalProduitSansTaxes = total+totalProduitSansTaxes;
+        total = transacService.Appliquer2Pour1(lstItems, total);
+        double totalAvecTaxes = transacService.addTaxToAmount(total);
+
+        //devrait etre 11.5 parce que le produit est taxable
+        assertEquals(11.5,totalAvecTaxes);
+    }
+    public void testTaxesSelonDifferentProduitsUnTaxableEtUnNonTaxable(){
+        Product testProdNoTaxes = new Product("TestProdNoTaxes", "Desc", 10.00, "22222223",false);
+        Product testProdTaxes = new Product("TestProdTaxes", "Desc", 20.00, "22222222",true);
+
+        double total = 0.00;
+        double totalProduitSansTaxes = 0.00;
+
+        List<TransactionItem> lstItems = new ArrayList<>();
+        TransactionItem itemNoTaxes = new TransactionItem(1,testProdNoTaxes);
+        TransactionItem itemTaxes = new TransactionItem(1,testProdTaxes);
+
+        lstItems.add(itemNoTaxes);
+        lstItems.add(itemTaxes);
+
+
+        for(TransactionItem transItem : lstItems)
+        {
+            //check si le produit est taxable
+            if(transItem.getProduct().getEstTaxable()){
+                total += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+            else{
+                totalProduitSansTaxes += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+        }
+
+        totalProduitSansTaxes = total+totalProduitSansTaxes;
+        total = transacService.Appliquer2Pour1(lstItems, total);
+        double totalAvecTaxes = transacService.addTaxToAmount(total);
+
+        //devrait etre 23.0 parce qu'un seul des deux produits est taxables
+        assertEquals(23.0,totalAvecTaxes);
     }
 }

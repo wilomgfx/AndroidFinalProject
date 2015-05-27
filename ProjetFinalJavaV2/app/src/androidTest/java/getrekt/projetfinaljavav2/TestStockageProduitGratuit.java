@@ -37,7 +37,7 @@ public class TestStockageProduitGratuit extends AndroidTestCase{
 
         List<ProduitGratuit> lstProds = new ArrayList<ProduitGratuit>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         double seuil = 10.00;
         ProduitGratuit p = new ProduitGratuit(prod, seuil);
         lstProds.add(p);
@@ -57,7 +57,7 @@ public class TestStockageProduitGratuit extends AndroidTestCase{
 
         List<ProduitGratuit> lstProds = new ArrayList<ProduitGratuit>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         double seuil = 10.00;
         ProduitGratuit p = new ProduitGratuit(prod, seuil);
         lstProds.add(p);
@@ -83,7 +83,7 @@ public class TestStockageProduitGratuit extends AndroidTestCase{
 
         List<ProduitGratuit> lstProds = new ArrayList<ProduitGratuit>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         double seuil = 10.00;
         ProduitGratuit p = new ProduitGratuit(prod, seuil);
         lstProds.add(p);
@@ -107,7 +107,7 @@ public class TestStockageProduitGratuit extends AndroidTestCase{
 
         List<ProduitGratuit> lstProds = new ArrayList<ProduitGratuit>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         double seuil = 10.00;
         ProduitGratuit p = new ProduitGratuit(prod, seuil);
         lstProds.add(p);
@@ -131,7 +131,7 @@ public class TestStockageProduitGratuit extends AndroidTestCase{
 
         List<ProduitGratuit> lstProds = new ArrayList<ProduitGratuit>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         double seuil = 10.00;
         ProduitGratuit p = new ProduitGratuit(prod, seuil);
         lstProds.add(p);

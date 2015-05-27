@@ -9,6 +9,16 @@ public class Product {
 
     private String m_productName;
 
+    private Boolean estTaxable;
+
+    public Boolean getEstTaxable() {
+        return estTaxable;
+    }
+
+    public void setEstTaxable(Boolean estTaxable) {
+        this.estTaxable = estTaxable;
+    }
+
     public String getProductName() {
         return m_productName;
     }
@@ -81,8 +91,11 @@ public class Product {
         }
     }
 
-    public Product(String pProductName, String pDesc, Double pPrice, String pBarCode)
+    public Product(String pProductName, String pDesc, Double pPrice, String pBarCode,Boolean pTaxable)
     {
+        if(pTaxable !=null){
+            estTaxable = pTaxable;
+        }
         if(pProductName != null)
         {
             m_productName = pProductName;

@@ -35,7 +35,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
         List<Product> lstProds = new ArrayList<Product>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         lstProds.add(prod);
 
         rabais2Pour1.setProduitsRabais(lstProds);
@@ -53,7 +53,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
         List<Product> lstProds = new ArrayList<Product>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         lstProds.add(prod);
 
         rabais2Pour1.setProduitsRabais(lstProds);
@@ -77,7 +77,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
         List<Product> lstProds = new ArrayList<Product>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         lstProds.add(prod);
 
         rabais2Pour1.setProduitsRabais(lstProds);
@@ -99,7 +99,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
         List<Product> lstProds = new ArrayList<Product>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         lstProds.add(prod);
 
         rabais2Pour1.setProduitsRabais(lstProds);
@@ -121,7 +121,7 @@ public class TestStockageRabais extends AndroidTestCase {
 
         List<Product> lstProds = new ArrayList<Product>();
 
-        Product prod = new Product("Test1", "nope", 12.50, "1");
+        Product prod = new Product("Test1", "nope", 12.50, "1",true);
         lstProds.add(prod);
 
         rabais2Pour1.setProduitsRabais(lstProds);

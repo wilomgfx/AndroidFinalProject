@@ -133,11 +133,11 @@ public class ProjetFinalMain extends ActionBarActivity {
         CustomDialog d = new CustomDialog();
         // initialization stuff, blah blah
         d.setDialogResult(new DialogResult(){
-            public void finish(String pProductName, String pDesc, double pPrice, String pBarCode){
+            public void finish(String pProductName, String pDesc, double pPrice, String pBarCode,Boolean pTaxable){
                 // now you can use the 'result' on your activity
                 // Here is what happens after the activity sends the Finish method call.
 
-                Product newProd = new Product(pProductName, pDesc, pPrice, pBarCode);
+                Product newProd = new Product(pProductName, pDesc, pPrice, pBarCode,pTaxable);
 
                 // Adding the data to the collections
                 //TODO Validation de produit
@@ -176,10 +176,10 @@ public class ProjetFinalMain extends ActionBarActivity {
         d.m_preAssignedBarCode = pNewBarCode;
         // initialization stuff, blah blah
         d.setDialogResult(new DialogResult(){
-            public void finish(String pProductName, String pDesc, double pPrice, String pBarCode){
+            public void finish(String pProductName, String pDesc, double pPrice, String pBarCode,Boolean pTaxable){
                 // now you can use the 'result' on your activity
                 // Here is what happens after the activity sends the Finish method call.
-                Product newProd = new Product(pProductName, pDesc, pPrice, pBarCode);
+                Product newProd = new Product(pProductName, pDesc, pPrice, pBarCode,pTaxable);
 
                 // TODO Validation de produit
                 if(!serviceProducts.exists(newProd))

@@ -218,12 +218,19 @@ public class TransactionService {
         }
 
         double total = 0.00;
+        double totalProduitSansTaxes = 0.00;
 
         for(TransactionItem transItem : lstItems)
         {
-            total += transItem.getQty() * transItem.getProduct().getPrice();
+            //check si le produit est taxable
+            if(transItem.getProduct().getEstTaxable()){
+                total += transItem.getQty() * transItem.getProduct().getPrice();
+            }
+            else{
+                totalProduitSansTaxes += transItem.getQty() * transItem.getProduct().getPrice();
+            }
         }
-
+        totalProduitSansTaxes = total+totalProduitSansTaxes;
         total = Appliquer2Pour1(lstItems, total);
         double totalAvecTaxes = addTaxToAmount(total);
 
@@ -238,7 +245,7 @@ public class TransactionService {
             montanttvq = total * (tvq/100);
         }
 
-        Log.i("Facture", context.getString(R.string.receipt_totalWithoutTaxes) + " " + df.format(total) + "$");
+        Log.i("Facture", context.getString(R.string.receipt_totalWithoutTaxes) + " " + df.format(totalProduitSansTaxes) + "$");
         Log.i("Facture","TPS: " + df.format(montanttps) + "$");
         Log.i("Facture","TVQ: " + df.format(montanttvq) + "$");
         Log.i("Facture","Total: " + df.format(totalAvecTaxes) + "$");
